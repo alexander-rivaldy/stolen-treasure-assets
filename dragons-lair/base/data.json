@@ -1,0 +1,15 @@
+[
+  {
+    "name": "Mystical Spell Scroll",
+    "type": "Item",
+    "quantity": 3,
+    "icons": ["one-usage", "all"],
+    "value": null,
+    "cardTexts": ["Reroll any die once"],
+    "erratas": [
+      "When you use Mystical Spell scroll, choose 1 die that has been rolled during an encounter or wager and reroll it.",
+      "You can choose your die, the dragon's die or another player's die.",
+      "Resolve this effect immediately after this item is used."
+    ]
+  }
+]
