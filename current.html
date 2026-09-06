@@ -1,0 +1,613 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function () {
+
+    var seaMonsters = [
+        {
+            "name": "Thunderhead",
+            "id": "thunderhead",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7eaceeb79b1e6574f8dd_SMEX-07%402x.webp",
+            "desc": "All players immediately bury all negative treasure cards in hand",
+            "elaboration": `The player activating Thunderhead is also affected
+Burying negative treasures due to Thunderhead's effect does not cost any action for any player`
+        },
+        {
+            "name": "Unleashed Kraken",
+            "id": "unleashed-kraken",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7eadb70984a63835a823_SMEX-02%402x.webp",
+            "desc": "Return all opponents' buried treasure cards to their respective player's hands",
+            "elaboration": `The player activating Unleashed Kraken is NOT affected
+Opponents take all their buried treasures back into their hands`
+        },
+        {
+            "name": "Sea Guardian",
+            "id": "sea-guardian",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7eac0f5e4d4149407a18_SMEX-10%402x.webp",
+            "desc": "For the rest of the game: piracy cards are now revealed and treasure cards are hidden when drawing",
+            "elaboration": `Interaction with player with Patches Harry: they still bury their Treasure cards face down`
+        },
+        {
+            "name": "Man o' war",
+            "id": "man-o-war",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7eacd07258c1e7f21cd2_SMEX-06%402x.webp",
+            "desc": "Every player puts all their treasure cards in hand up for a wager. All players wager until you have one winner",
+            "elaboration": `When there are more than 2 players in the game, do Rock-Paper-Scissors at the same time and eliminate the losing player(s). Repeat until you have one player standing, that player keeps all the treasures wagered`
+        },
+        {
+            "name": "Wish Fish",
+            "id": "wish-fish",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7eac0b95a14cb887d720_SMEX-04%402x.webp",
+            "desc": "Search for up to 2 cards of your choosing in any deck and put them into your hand",
+            "elaboration": `You may select one card from one deck, then choose a different deck to search for the other card. Alternatively, you can also choose two cards from the same type of deck`
+        },
+        {
+            "name": "Siren",
+            "id": "siren",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7eacfc5bb99c65703b2b_SMEX-01%402x.webp",
+            "desc": "Opponents draw 2 treasure cards, you draw 2 treasure cards for each player",
+            "elaboration": `All players reveal the treasure cards received. (Unless a character card/effect states otherwise) Opponent players draw treasure first, then player using the Siren monster.`
+        },
+        {
+            "name": "Barnacle Monster",
+            "id": "barnacle-monster",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7eacf44d8bd7db8c575d_SMEX-05%402x.webp",
+            "desc": "Get ALL the barnacles from EVERYWHERE! Bury all on player(s) as you see fit",
+            "elaboration": `Put into your hand all treasure cards named Barnacle from the following locations: treasure decks, other player(s) hand (they must give them up), buried treasures and discarded treasure pile. Immediately bury all Barnacles on any number of players as you see fit`
+        },
+        {
+            "name": "Sea Serpent",
+            "id": "sea-serpent",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7eaceeb79b1e6574f907_SMEX-08%402x.webp",
+            "desc": "All players swap their highest buried treasure card with the lowest treasure card in hand",
+            "elaboration": `"The player activating Sea Serpent is also affected
+Each player immediately swaps their highest value buried treasure with one of their lowest value treasure card in hand (doing this does not cost an action)
+When a player does not have a buried treasure OR have no treasure card in hand, they are not affected"`
+        },
+        {
+            "name": "Kappa",
+            "id": "kappa",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7eac25e184c1e20314ae_SMEX-09%402x.webp",
+            "desc": "Perform 2 swaps of buried treasure cards",
+            "elaboration": `You may choose different opponents to swap with. You may perform swaps of treasure not buried by the player.`
+        },
+        {
+            "name": "Dobby Mick",
+            "id": "dobby-mick",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7eaddc109a1581a6c5ee_SMEX-03%402x.webp",
+            "desc": "You are not affected by opponents' piracy cards until you play a piracy card",
+            "elaboration": `You are still affected by Sea Monster and Character card effects`
+        }
+    ]
+
+    var characters = [
+        {
+            "name": "Salazar Muerto",
+            "id": "salazar-muerto",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7e91e492a0a83de5b364_CEX-007%402x.webp",
+            "desc": `You have one extra action type:
+Discard 1 card from your hand. Choose a piracy card in the discard pile and put it in your hand`,
+            "elaboration": `You may use this ability as many times as you like on your turn. You can only use this action during your turn. You cannot use this action while other effects of cards/actions are being resolved.`
+        },
+        {
+            "name": "Two Timing Tommy",
+            "id": "two-timing-tommy",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7e928d4568c99eb33e90_CEX-002%402x.webp",
+            "desc": `You have one free action per turn:
+You may give a chosen player one card from your hand`,
+            "elaboration": `You can only use this ability once per turn. It can only be done on your turn. This does not count as one of your other regular two actions. This ability can be performed at any point during your turn.`
+        },
+        {
+            "name": "Penzance the Parrot",
+            "id": "penzance-the-parrot",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7e91dc109a1581a6ae54_CEX-004%402x.webp",
+            "desc": `You have +1 action per turn`,
+            "elaboration": `You have 3 actions per turn to use instead of 2`
+        },
+        {
+            "name": "Jeremy D Burrows",
+            "id": "jeremy-d-burrows",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7e91498849c55bb90716_CEX-005%402x.webp",
+            "desc": `You can immediately bury treasures`,
+            "elaboration": `This character negates the rule of only being able to bury a treasure after one round has elapsed in order to bury a treasure card. Burying still requires and action. You can only bury on your turn.`
+        },
+        {
+            "name": "Jane Silvers",
+            "id": "jane-silvers",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7e92442171574731fe74_CEX-001%402x.webp",
+            "desc": `Your Silver Coins are worth +200`,
+            "elaboration": `Silver Coins are worth +200 instead of +50 only for the player with Jane Silvers`
+        },
+        {
+            "name": "Richard Hoarding",
+            "id": "richard-hoarding",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7e910b95a14cb887bfe2_CEX-009%402x.webp",
+            "desc": `When you bury a treasure card, draw another treasure card from the deck`,
+            "elaboration": `Do this immediately after the bury action. This does not count as an action of the turn.`
+        },
+        {
+            "name": "Commodore Flemming",
+            "id": "commodore-flemming",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7e92442171574731fe6f_CEX-010%402x.webp",
+            "desc": `When you play a pirate card: attacked opponent(s) must discard one card of their choosing`,
+            "elaboration": `Discard happens after all effects are resolved.
+Discard happens even if attacking pirate card is nullified.
+The discard effect of Commodore Flemming is not applied to players with Hardy Samantha or Dobby Mick, as they are not targeted`
+        },
+        {
+            "name": "Hardy Samantha",
+            "id": "hardy-samantha",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7e92b5afb1e764f2c3bf_CEX-006%402x.webp",
+            "desc": `You resist group effects and interrupt Piracy Cards`,
+            "elaboration": `Whenever you play an action card, none of the other player's interrupt card can affect your played action card.
+When another player plays a group effect piracy card (for example: Yohoho! or The Kraken), you are not affected.
+You are still affected by piracy cards with the attack icon that only targets you and by any Sea Monster card.
+Piracy cards played by you cannot be interrupted, but defensive piracy cards can still be played against you.`
+        },
+        {
+            "name": "Claire Von Ante",
+            "id": "claire-von-ante",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7e92e50f5c1756445e1e_CEX-008%402x.webp",
+            "desc": `You have one free action per turn:
+You may look at the top card of every deck`,
+            "elaboration": `You can only do this once per turn. Check may be performed before or after regular turn actions. Cards once checked must be placed back on the top of the deck. Cards are only revealed to player with Claire Von Ante character card.`
+        },
+        {
+            "name": "Patches Harry",
+            "id": "patches-harry",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7e92498849c55bb90754_CEX-003%402x.webp",
+            "desc": `You draw and bury treasures face down`,
+            "elaboration": `You may check your buried cards at any time. Treasures buried face down are still counted towards other effects (eg. The Opal). Conceal treasure cards whenever receiving them.`
+        }
+    ]
+
+    var piracys = [
+        {
+            "name": "Mutiny!",
+            "id": "mutiny!",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7ea3f4bfa61598c5c8b5_PEX-007%402x.webp",
+            "desc": "At the count of 3, everyone points at a chosen player. Player(s) with the most votes discard their entire hand",
+            "icons": "ALL,ATK",
+            "elaboration": `In the case of a tie, all players with the same highest votes discard their entire hand`,
+        },
+        {
+            "name": "Pillage",
+            "id": "pillage",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7ea3d10bc61bb827ca02_PEX-008%402x.webp",
+            "desc": "Draw as many treasure cards as the number of players. Shuffle them and deal one to each player",
+            "icons": "ALL,ATK",
+            "elaboration": `After drawing the same amount of treasure cards as the number of players, shuffle them and starting from yourself, deal one treasure counter clockwise
+Every treasure card must be revealed upon being dealt, except when Sea Guardian's effect is active`,
+        },
+        {
+            "name": "Walk the Plank",
+            "id": "walk-the-plank",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7ea32944e309d0d890e0_PEX-001%402x.webp",
+            "desc": "Attacking player's turn ends and skips their next turn",
+            "icons": "OPP1,DEF",
+            "elaboration": `The attacking player's turn immediately ends even if they still have any unused actions
+For example, Player A has 2 actions and used their first action to play a piracy card that targeted Player B. Player B played Walk The Plank as a response. Player A's turn immediately ends after the first piracy card's effect has been resolved and Player A cannot use their unused second action anymore.`,
+        },
+        {
+            "name": "El Mico",
+            "id": "el-mico",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7ea3f439fbf6049410c0_PEX-010%402x.webp",
+            "desc": "Steal the effect of an opponent's piracy card. It resolves as if you are playing it instead",
+            "icons": "OPP1,INT",
+            "elaboration": `For example, Player A plays X Marks The Spot towards Player B to steal their buried treasure. Player C then played El Mico. Player C gets to steal Player B's buried treasure instead of Player A now as if Player C played the piracy card themselves`,
+        },
+        {
+            "name": "Wet Gunpowder",
+            "id": "wet-gunpowder",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7ea3aedba6380489b854_PEX-006%402x.webp",
+            "desc": "Until your next turn, opponents cannot use any piracy cards",
+            "icons": "OPPS,ATK",
+            "elaboration": `Until the start of your next turn, your opponents cannot use their action to play a piracy card nor play any interrupt & defensive piracy cards`,
+        },
+        {
+            "name": "Scurvyz",
+            "id": "scurvy",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7ea31a45f441e25a152b_PEX-004%402x.webp",
+            "desc": "Play with your cards facing towards your opponents\n(You may look at your cards)",
+            "icons": "SELF,CON",
+            "elaboration": `Hold your cards in hand with their backs toward you so all opponents can see what you have in hand
+You are allowed to look at your cards at any given point but you have to ensure your opponents can see your cards again afterwards`,
+        },
+        {
+            "name": "Full Sail",
+            "id": "full-sail",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7ea36bfdc9d31915997e_PEX-002%402x.webp",
+            "desc": "Until your next turn, every opponent only has one action",
+            "icons": "OPPS,ATK",
+            "elaboration": `Starting from the end of your turn, your opponents only have 1 action to play during their turn
+Opponents action count return to normal after your next turn ended
+If an affected opponent has Penzance the Parrot, their turn has 2 actions instead of 3`,
+        },
+        {
+            "name": "Kraken Blood",
+            "id": "kraken-blood",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7ea3943c8a5569221189_PEX-009%402x.webp",
+            "desc": "Each player puts their highest value buried treasure card back into the deck. Shuffle the deck",
+            "icons": "ALL,ATK",
+            "elaboration": `In the case of 2 buried treasures with the same highest value, the owner of said treasures choose which treasure is shuffled back into the deck`,
+        },
+        {
+            "name": "Oranges and Lemons",
+            "id": "oranges-and-lemons",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7ea4eeb79b1e6574f289_PEX-005%402x.webp",
+            "desc": "Discard one card from your hand. Draw a card of the same type",
+            "icons": "SELF,ATK",
+            "elaboration": `After using an action to play Oranges and Lemons, immediately discard one card from your hand of your choosing into the discard pile and draw the same type of card from the deck (Piracy or Treasure) 
+If the deck of the same type has no more cards, draw from any deck`,
+        },
+        {
+            "name": "Hard Tack",
+            "id": "hard-tack",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7ea356f5d1fb4619fdb7_PEX-003%402x.webp",
+            "desc": "You may use this card to match a wager, it provides equal value \n (Discard after wager resolves)",
+            "icons": "SELF,INT",
+            "elaboration": `Hard Tack cannot be used to initiate a wager
+When an opponent initiated a wager with you, you can use Hard Tack to match however much value your opponent placed down`,
+        }
+    ]
+
+    var treasures = [
+        {
+            "name": "Rolling Doubloon",
+            "id": "rolling-doubloon",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7eb632f450befd3adc66_TEX-010%402x.webp",
+            "desc": "Bury this treasure immediately after being drawn. Move to the next player at the end of your turn",
+            "value": "+100",
+            "elaboration": `Immediately burying Rolling Doubloon when drawn does not cost an action`,
+        },
+        {
+            "name": "Black Pearl",
+            "id": "black-pearl",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7eb6e57cb1493b4cd76a_TEX-009%402x.webp",
+            "desc": "",
+            "value": "+1000",
+            "elaboration": `Legends tell of a the incredible black pearl. It is rumored to be the size of an orange. Many a dread pirate have sought the coveted treasure. Rumours abound of ill-fortune following those who seek to bury the lustrous prize.`,
+        },
+        {
+            "name": "Karma Chest",
+            "id": "karma-chest",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7eb6e57cb1493b4cd76e_TEX-006%402x.webp",
+            "desc": "The value of this card is -50 for each piracy card you have in your hand",
+            "value": "-50x",
+            "elaboration": `When wagered: the value is calculated by the cards in the player who has placed Karma-Chest in the wager`,
+        },
+        {
+            "name": "Bird Food",
+            "id": "bird-food",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7eb6e1035add084b59f5_TEX-004%402x.webp",
+            "desc": "While buried, you can discard this card to gain 2 extra actions this turn",
+            "value": "+10",
+            "elaboration": `You cannot discard Bird Food on other player's turn
+Discarding Bird Food does not cost an action`,
+        },
+        {
+            "name": "Coconut Crown",
+            "id": "coconut-crown",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7eb642d2dabfa80c63f2_TEX-001%402x.webp",
+            "desc": "While buried, buried treasure with negative value become +100",
+            "value": "+0",
+            "elaboration": `Negative treasures revert to their negative value if coconut crown is removed`,
+        },
+        {
+            "name": "Gem Polish",
+            "id": "gem-polish",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7eb6befe6a8406fd7284_TEX-005%402x.webp",
+            "desc": "After this card is buried, the next treasure you bury gains twice its value",
+            "value": "x2",
+            "elaboration": `Burying this card takes an action
+You may bury Gem Polish first and another treasure in the same turn
+Gem Polish's effect carries over to your next turn. If Gem polish is stolen, its effect is also taken. Originally associated treasure will also lose the Gem Polish attribution and bonus`,
+        },
+        {
+            "name": "Opal",
+            "id": "opal",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7eb63a763786c753d5ba_TEX-008%402x.webp",
+            "desc": "The value of this card is 100 times the amount of gems buried anywhere",
+            "value": "100x",
+            "elaboration": `Treasures that are gems: Sapphire, Ruby, Emerald, Diamond, Black Pearl, Opal 
+Opal Scenario: When a treasure card is buried face down. Any gem card buried will still contribute to Opal's multiplier. Simply request the number of buried gems (Without revealing the card value)`,
+        },
+        {
+            "name": "Curse of Doom island",
+            "id": "curse-of-doom-island",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7eb6dc109a1581a6ce31_TEX-003%402x.webp",
+            "desc": "Attach this to one of your treasures when buried, that treasure cannot be affected by a piracy card",
+            "value": "-150",
+            "elaboration": `This card cannot be attached to a treasure that is already buried, it must be attached at the same time a treasure is being buried. Attaching Curse of Doom Island to a treasure does not cost an action`,
+        },
+        {
+            "name": "Bilge Rat",
+            "id": "bilge-rat",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7eb6eef89b9a59ff11ce_TEX-002%402x.webp",
+            "desc": "You can bury this on your opponent",
+            "value": "-150",
+            "elaboration": `You may also bury Bilge Rat on yourself`,
+        },
+        {
+            "name": "Golden Seed",
+            "id": "golden-seed",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7eb6bd96b11f4f6dda27_TEX-007%402x.webp",
+            "desc": "The value of this card is 50 times the amount of your treasures buried",
+            "value": "50x",
+            "elaboration": `When buried, Golden Seed is also counted towards total number of treasures buried`,
+        }
+    ]
+
+    var islandOfDoom = [
+        {
+            "name": "Hexed Pendant",
+            "id": "hexed-pendant",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7e9bcda893989f0efe03_IDEX-008%402x.webp",
+            "desc": "All your negative treasure cards are now positive and all positive treasure cards are now negative",
+            "value": "-700",
+            "icons": "SELF,CON",
+            "elaboration": `Hexed Pendant counts as positive 700 when wagered
+Positive buried and negatives in hand net value rules still apply`
+        },
+        {
+            "name": "The Gold Idol",
+            "id": "the-gold-idol",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7e9b7f436445db355f7e_IDEX-001%402x.webp",
+            "desc": "",
+            "value": "+300",
+            "icons": "",
+            "elaboration": `In the heart of the Island of Doom sits a gleaming gold idol, said to bring fortune to any who hold it—if they survive the curse. The idol’s last owner was found rich but mad, muttering of golden nightmares and voices from the depths. Few dare seek it now, for whispers tell of shadows that guard the idol with a vengeance.`
+        },
+        {
+            "name": "Temple of Decay",
+            "id": "temple-of-decay",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7e9c03d9e5f196a62d69_IDEX-009%402x.webp",
+            "desc": "When you play this card: If your current net points are equal to or less than -800 you win the game",
+            "value": "",
+            "icons": "SELF,INT",
+            "elaboration": `Positive buried and negatives in hand net rules apply`
+        },
+        {
+            "name": "Booby Trap",
+            "id": "booby-trap",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7e9dee413ace38f0b995_IDEX-006%402x.webp",
+            "desc": "When drawn, reveal. Draw 2 treasure cards and discard all piracy cards. Shuffle this card back into the piracy deck",
+            "value": "",
+            "icons": "SELF,INT",
+            "elaboration": `Resolving Booby Trap's effect does not cost an action`
+        },
+        {
+            "name": "Bejeweled Pistol",
+            "id": "bejeweled-pistol",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7e9bf44d8bd7db8c4aab_IDEX-002%402x.webp",
+            "desc": "",
+            "value": "+200",
+            "icons": "",
+            "elaboration": `On the cursed Island of Doom lies a bejeweled pistol, said to grant deadly aim but curse its bearer with visions of the pirate who last wielded it. Many have sought it, but few return, speaking only of the array of traps and a mysterious figure guarding the treasure.`
+        },
+        {
+            "name": "The Lost Charts",
+            "id": "the-lost-charts",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7e9b9cb7bbbdaab24ccb_IDEX-010%402x.webp",
+            "desc": "You may treat this card as a treasure card",
+            "value": "+200",
+            "icons": "",
+            "elaboration": `The Lost Charts can be used as if it is a treasure card, for example, buried, initiate a wager and to respond to a wager
+You may keep this card concealed when drawn (Unless otherwise affected)`
+        },
+        {
+            "name": "Cursed Waters",
+            "id": "cursed-waters",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7e9b8ed014c19117d85e_IDEX-005%402x.webp",
+            "desc": "Reverse the turn order",
+            "value": "",
+            "icons": "INT",
+            "elaboration": `Turn reversal takes place AFTER the current player playing resolves their turn when this card is played
+For example: there are 3 players in game, Player A, Player B and Player C. The normal turn order goes from A -> B -> C. During Player B's turn, Player A plays Cursed Waters. After Player B completed their turn, the next Player playing will be A, and the turn order becomes B -> A -> C`
+        },
+        {
+            "name": "Eruption",
+            "id": "eruption",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7e9bdc109a1581a6b4ff_IDEX-004%402x.webp",
+            "desc": "Discard one treasure card. Opponents discard treasure(s) with more than, equal to or closest value of the discarded card",
+            "value": "",
+            "icons": "ALL, ATK",
+            "elaboration": `Return all discarded cards to their respective hands if this card is interrupted`
+        },
+        {
+            "name": "Sacrificial Dagger",
+            "id": "sacrificial-dagger",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7e9b088e7302294b7df7_IDEX-007%402x.webp",
+            "desc": "When you bury this treasure, you may place piracy cards from your hand underneath. The value of this card is x100 for each piracy card",
+            "value": "100x",
+            "icons": "",
+            "elaboration": `When a buried Sacrificial Dagger is returned to hand, discard all piracy cards underneath.`
+        },
+        {
+            "name": "Forbidden Medallion",
+            "id": "forbidden-medallion",
+            "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/671f7e9b25e184c1e20309e1_IDEX-003%402x.webp",
+            "desc": "This treasure cannot be wagered",
+            "value": "-400",
+            "icons": "",
+            "elaboration": `Forbidden Medallion cannot be used to initiate a wager nor to be used when responding to a wager.`
+        }
+    ]
+
+    var seaMonsterContainer = document.querySelector(".cards-container.sea-monsters")
+    seaMonsters.forEach(seaMonster => {
+        seaMonsterContainer.appendChild(createCardHolder(seaMonster))
+        seaMonsterContainer.appendChild(createOverlay(seaMonster))
+    })
+
+    var piracyContainer = document.querySelector(".cards-container.piracy")
+    piracys.forEach(piracy => {
+        piracyContainer.appendChild(createCardHolder(piracy))
+        piracyContainer.appendChild(createOverlay(piracy))
+    })
+
+    var treasureContainer = document.querySelector(".cards-container.treasure")
+    treasures.forEach(t => {
+        treasureContainer.appendChild(createCardHolder(t))
+        treasureContainer.appendChild(createOverlay(t))
+    })
+
+    var islandOfDoomContainer = document.querySelector(".cards-container.island-of-doom")
+    islandOfDoom.forEach(i => {
+        islandOfDoomContainer.appendChild(createCardHolder(i))
+        islandOfDoomContainer.appendChild(createOverlay(i))
+    })
+
+    var characterContainer = document.querySelector(".cards-container.character")
+    characters.forEach(c => {
+        characterContainer.appendChild(createCardHolder(c))
+        characterContainer.appendChild(createOverlay(c))
+    })
+
+    function createCardHolder(card) {
+        var cardHolder = document.createElement("div")
+        cardHolder.className = "card-holder"
+
+        var cardFront = document.createElement("div")
+        cardFront.className = "card-front"
+        cardFront.style.backgroundImage = `url(${card.image})`
+        cardFront.style.backgroundSize = "cover";
+        cardFront.style.backgroundPosition = "center";
+        cardHolder.appendChild(cardFront)
+        return cardHolder
+    }
+
+    function divWithClass(className) {
+        var div = document.createElement("div")
+        div.className = className
+        return div
+    }
+
+    function divWithClassAsChild(className, parent) {
+        var div = divWithClass(className)
+        parent.appendChild(div)
+        return div
+    }
+
+    function piracyCardCopy(title, desc, parent) {
+        var heading = document.createElement("h4")
+        heading.innerText = title
+        heading.className = "rules-section-subheading text-dark sub"
+        parent.appendChild(heading)
+
+        var paragraph = document.createElement("p")
+        paragraph.innerText = desc
+        paragraph.className = "rules-paragraph left-align"
+        parent.appendChild(paragraph)
+    }
+
+    function createIcon(type) {
+        var div = divWithClass("div-block-46")
+        var image = document.createElement("img")
+        var src = ""
+        switch (type) {
+            case "SELF":
+                src = "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fbdac3c7a6bd0d0dbd98_self-targeted.png"
+                break;
+            case "OPPS":
+                src = "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fbcc538d8311c34d32b5_all-oponents.png"
+                break;
+            case "OPP1":
+                src = "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fa8bb9390a0c9fb9c977_single-opponent.png"
+                break;
+            case "ALL":
+                src = "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fc61d7e06dc051e6d70e_everyone.png"
+                break;
+            case "CON":
+                src = "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fd0ab862c99ba2029738_consistent-effect.png"
+                break;
+            case "ATK":
+                src = "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fcdf91fee3d02f531d1e_actioned-in-turn.png"
+                break;
+            case "DEF":
+                src = "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fd0ad187a260def39613_actioned-responsively.png"
+                break;
+            case "INT":
+                src = "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fd0a67c5485beba7b237_interrupt.png"
+                break;
+        }
+        image.src = src
+        div.appendChild(image)
+        return div
+    }
+
+    function createOverlay(card) {
+        var cardOverlay = divWithClass("card-overlay")
+        var cardInfoModal = divWithClassAsChild("card-info-modal", cardOverlay)
+        var cardInfoContent = divWithClassAsChild("card-info-content", cardInfoModal)
+        var cardImageAndAmount = divWithClassAsChild("card-image-and-amount", cardInfoContent)
+        var imageContainer = divWithClassAsChild("", cardImageAndAmount)
+        var cardImage = divWithClassAsChild("", imageContainer)
+
+        cardImage.className = "card-front"
+        cardImage.style.backgroundImage = `url(${card.image})`
+        cardImage.style.backgroundSize = "cover";
+        cardImage.style.backgroundPosition = "center";
+
+        var cardInfo = divWithClassAsChild("card-info", cardInfoContent)
+        var cardInfoLeft = divWithClassAsChild("card-info-left", cardInfo)
+        var piracyCardNameContainer = divWithClassAsChild("piracy-card-copy", cardInfoLeft)
+
+        piracyCardCopy("Name:", card.name, piracyCardNameContainer)
+        if (card.value) {
+            piracyCardCopy("Value:", card.value, piracyCardNameContainer)
+        }
+        if (card.desc) {
+            piracyCardCopy("Description:", card.desc, piracyCardNameContainer)
+        }
+
+        var cardInfoRight = divWithClassAsChild("card-info-right", cardInfo)
+        var piracyDetailsContainer = divWithClassAsChild("piracy-card-copy", cardInfoRight)
+        var cardInfoTitleIcons = divWithClassAsChild("card-info-title-and-icons", piracyDetailsContainer)
+
+        // only cards with description have how to play heading, otherwise it's just flavour text
+        if (card.desc) {
+            // How To Play heading
+            var howToPlayHeading = document.createElement("h4")
+            var howToPlayText = document.createElement("strong")
+            howToPlayText.innerText = "How To Play:"
+            howToPlayHeading.appendChild(howToPlayText)
+            howToPlayHeading.className = "rules-section-subheading text-dark sub"
+
+            cardInfoTitleIcons.appendChild(howToPlayHeading)
+        }
+
+        if (card.icons) {
+            card.icons.split(",").forEach(icon => cardInfoTitleIcons.appendChild(createIcon(icon)))
+        }
+
+        // add icons
+        var elaboration = document.createElement("p")
+        elaboration.innerText = card.elaboration
+        elaboration.className = "rules-paragraph left-align"
+
+        piracyDetailsContainer.appendChild(elaboration)
+
+        // close button
+        var closeButton = divWithClassAsChild("close-button", cardInfoModal)
+        var closeButtonImage = document.createElement("img")
+        closeButtonImage.src = "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f0184fd3eab8733eb827e31_delete.svg"
+        closeButton.appendChild(closeButtonImage)
+
+        return cardOverlay
+    }
+
+    document.querySelectorAll(".card-holder").forEach(holder => {
+        holder.onclick = function () {
+            holder.nextElementSibling.style.display = "flex"
+        }
+    })
+
+    document.querySelectorAll(".close-button").forEach(button => {
+        button.onclick = function () {
+            button.parentElement.parentElement.style.display = "none"
+        }
+    })
+});
+
+</script>

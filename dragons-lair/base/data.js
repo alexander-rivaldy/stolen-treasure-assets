@@ -1,27 +1,27 @@
-const baseData = [
+var seaMonsters = (baseData = [
     {
-        "name": "Mystical Spell Scroll",
-        "image": "",
-        "type": "Item",
-        "quantity": 3,
-        "icons": ["one-usage", "all"],
-        "value": null,
-        "cardTexts": ["Reroll any die once"],
-        "erratas": [
+        name: "Mystical Spell Scroll",
+        image: "",
+        type: "Item",
+        quantity: 3,
+        icons: ["one-usage", "all"],
+        value: null,
+        cardTexts: ["Reroll any die once"],
+        erratas: [
             "When you use Mystical Spell scroll, choose 1 die that has been rolled during an encounter or wager and reroll it.",
             "You can choose your die, the dragon's die or another player's die.",
-            "Resolve this effect immediately after this item is used."
-        ]
+            "Resolve this effect immediately after this item is used.",
+        ],
     },
     {
-        "name": "Paladin Hammer",
-        "image": "",
-        "type": "Item",
-        "quantity": 3,
-        "icons": ["tappable", "all"],
-        "value": null,
-        "cardTexts": ["Redraw the current Dragon card"],
-        "erratas": [
+        name: "Paladin Hammer",
+        image: "",
+        type: "Item",
+        quantity: 3,
+        icons: ["tappable", "all"],
+        value: null,
+        cardTexts: ["Redraw the current Dragon card"],
+        erratas: [
             "The previously drawn Dragon card is discarded and its effect is not resolved. A Dragon card discarded by Paladin Hammer does not count towards the danger level. ",
             "Player must choose to use Paladin Hammer right before a Dragon card's effect is resolved. Paladin Hammer cannot be used to redraw a previous Dragon card whose effect has been resolved.",
             "You may not use Paladin Hammer on a Dragon card with ! icon",
@@ -33,98 +33,277 @@ const baseData = [
             "The third Dragon card is drawn, the effect resolves. (3 out of 3 danger level fulfilled)",
             "",
             "",
-            "Note: 4 Dragon cards have been drawn in the encounter, only 3 effects resolved to fulfill the danger level since one was discarded by Paladin Hammer"
-        ]
+            "Note: 4 Dragon cards have been drawn in the encounter, only 3 effects resolved to fulfill the danger level since one was discarded by Paladin Hammer",
+        ],
     },
     {
-        "name": "Thief's Dagger",
-        "image": "",
-        "type": "item",
-        "quantity": 3,
-        "icons": ["one-usage", "target"],
-        "cardTexts": ["Steal a treasure card"],
-        "erratas": [
+        name: "Thief's Dagger",
+        image: "",
+        type: "item",
+        quantity: 3,
+        icons: ["one-usage", "target"],
+        cardTexts: ["Steal a treasure card"],
+        erratas: [
             "When used, discard this card immediately before resolving the effect.",
             "If this card's effect is blocked, this card is still discarded after use.",
             "You may target the Dragon's treasure.",
             "",
-            "Thief's Dagger can target a treasure card in either the Dragon's hoard or other player's inventory. You may not use Thief's Dagger effect to gain a treasure from the treasure deck(s)."
-        ]
+            "Thief's Dagger can target a treasure card in either the Dragon's hoard or other player's inventory. You may not use Thief's Dagger effect to gain a treasure from the treasure deck(s).",
+        ],
     },
     {
-        "name": "Orb of Ponderance",
-        "image": "",
-        "type": "item",
-        "quantity": 3,
-        "icons": ["tappable", "self"],
-        "cardTexts": ["Draw a card from anywhere in a deck"],
-        "erratas": [
+        name: "Orb of Ponderance",
+        image: "",
+        type: "item",
+        quantity: 3,
+        icons: ["tappable", "self"],
+        cardTexts: ["Draw a card from anywhere in a deck"],
+        erratas: [
             "When drawing: You may use Orb of Ponderance. Pick one treasure or item deck and riffle through looking only at the back of the cards, choose one card from anywhere within the deck to be drawn. ",
             "During an encounter:  You may use Orb of Ponderance. Riffle through the Dragon deck looking only at the back of the cards, choose one card from anywhere within the deck to be drawn. ",
             "Card faces should not be revealed while riffling.",
             "You cannot change which deck is selected once initial choice is made.",
-            "Do not shuffle the deck after use."
-        ]
+            "Do not shuffle the deck after use.",
+        ],
     },
     {
-        "name": "Wizard's Cloak",
-        "image": "",
-        "type": "item",
-        "quantity": 3,
-        "icons": ["tappable", "all"],
-        "cardTexts": ["Copy the effect of an item in any inventory"],
-        "erratas": [
+        name: "Wizard's Cloak",
+        image: "",
+        type: "item",
+        quantity: 3,
+        icons: ["tappable", "all"],
+        cardTexts: ["Copy the effect of an item in any inventory"],
+        erratas: [
             "When using the Wizard's Cloak, you choose any item in any player's inventory (including yours), resolve the effect of this card as if it were the chosen item. ",
             "",
             "You may not a Wizard's Cloak to copy another Wizard's Cloak's effect.",
             "When you have multiple Wizard's Cloak, you may use them independently and choose to copy a different item for each Wizard's Cloak or choose to copy the same item's effect multiple times.",
             "You may copy a tapped item's effect.",
             "When Wizard's Cloak is used to copy an item's effect that has 1️⃣ One usage, then Wizard's Cloak is discarded after use.",
-            "You may not use Wizard's Cloak to copy items in the Dragon's hoard."
-        ]
+            "You may not use Wizard's Cloak to copy items in the Dragon's hoard.",
+        ],
     },
     {
-        "name": "Regal Lance",
-        "image": "",
-        "type": "item",
-        "quantity": 3,
-        "icons": ["one-usage", "all"],
-        "cardTexts": ["Gain +1 die for a contest"],
-        "erratas": [
+        name: "Regal Lance",
+        image: "",
+        type: "item",
+        quantity: 3,
+        icons: ["one-usage", "all"],
+        cardTexts: ["Gain +1 die for a contest"],
+        erratas: [
             "When using Regal Lance, add one more die to your roll for an encounter or a wager.",
             "",
             "You may use Regal Lance after the initial roll.",
-            "You may use multiple Regal Lances in a roll."
-        ]
+            "You may use multiple Regal Lances in a roll.",
+        ],
     },
     {
-        "name": "Dragonfire Shield",
-        "image": "",
-        "type": "item",
-        "quantity": 3,
-        "icons": ["tappable", "all"],
-        "cardTexts": ["Prevent a card's effect on a player"],
-        "erratas": [
+        name: "Dragonfire Shield",
+        image: "",
+        type: "item",
+        quantity: 3,
+        icons: ["tappable", "all"],
+        cardTexts: ["Prevent a card's effect on a player"],
+        erratas: [
             "You may use Dragonfire Shield to prevent a card's effect towards yourself or another player. Dragonfire Shield can prevent Dragon cards or item card effects that are targeted towards chosen player.",
             "When a Dragon or Item card affects multiple players, Dragonfire Shield only prevents the card's effect towards one player.",
             "",
             "Expansion interaction",
-            "- Mythical Monsters: Dragonfire Shield can prevent a targeted Mythical Monster's effect"
-        ]
+            "- Mythical Monsters: Dragonfire Shield can prevent a targeted Mythical Monster's effect",
+        ],
     },
     {
-        "name": "Righteous Sword",
-        "image": "",
-        "type": "item",
-        "quantity": 3,
-        "icons": ["tappable", "self"],
-        "cardTexts": ["Add +1 value to each of your die for a contest"],
-        "erratas": [
+        name: "Righteous Sword",
+        image: "",
+        type: "item",
+        quantity: 3,
+        icons: ["tappable", "self"],
+        cardTexts: ["Add +1 value to each of your die for a contest"],
+        erratas: [
             "Righteous Sword adds +1 base value to each of your die.",
             "For example:",
             "- When you roll 1 die, your total die roll value will be +1.",
             "- When you roll 2 dice, your total die roll value will be +2.",
-            "- When you roll 3 dice, your total die roll value will be +3, etc."
-        ]
+            "- When you roll 3 dice, your total die roll value will be +3, etc.",
+        ],
+    },
+]);
+
+var seaMonsterContainer = document.querySelector(
+    ".cards-container.sea-monsters",
+);
+seaMonsters.forEach((seaMonster) => {
+    seaMonsterContainer.appendChild(createCardHolder(seaMonster));
+    seaMonsterContainer.appendChild(createOverlay(seaMonster));
+});
+
+function createCardHolder(card) {
+    var cardHolder = document.createElement("div");
+    cardHolder.className = "card-holder";
+
+    var cardFront = document.createElement("div");
+    cardFront.className = "card-front";
+    cardFront.style.backgroundImage = `url(${card.image})`;
+    cardFront.style.backgroundSize = "cover";
+    cardFront.style.backgroundPosition = "center";
+    cardHolder.appendChild(cardFront);
+    return cardHolder;
+}
+
+function divWithClass(className) {
+    var div = document.createElement("div");
+    div.className = className;
+    return div;
+}
+
+function divWithClassAsChild(className, parent) {
+    var div = divWithClass(className);
+    parent.appendChild(div);
+    return div;
+}
+
+function piracyCardCopy(title, desc, parent) {
+    var heading = document.createElement("h4");
+    heading.innerText = title;
+    heading.className = "rules-section-subheading text-dark sub";
+    parent.appendChild(heading);
+
+    var paragraph = document.createElement("p");
+    paragraph.innerText = desc;
+    paragraph.className = "rules-paragraph left-align";
+    parent.appendChild(paragraph);
+}
+
+function createIcon(type) {
+    var div = divWithClass("div-block-46");
+    var image = document.createElement("img");
+    var src = "";
+    switch (type) {
+        case "SELF":
+            src =
+                "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fbdac3c7a6bd0d0dbd98_self-targeted.png";
+            break;
+        case "OPPS":
+            src =
+                "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fbcc538d8311c34d32b5_all-oponents.png";
+            break;
+        case "OPP1":
+            src =
+                "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fa8bb9390a0c9fb9c977_single-opponent.png";
+            break;
+        case "ALL":
+            src =
+                "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fc61d7e06dc051e6d70e_everyone.png";
+            break;
+        case "CON":
+            src =
+                "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fd0ab862c99ba2029738_consistent-effect.png";
+            break;
+        case "ATK":
+            src =
+                "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fcdf91fee3d02f531d1e_actioned-in-turn.png";
+            break;
+        case "DEF":
+            src =
+                "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fd0ad187a260def39613_actioned-responsively.png";
+            break;
+        case "INT":
+            src =
+                "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fd0a67c5485beba7b237_interrupt.png";
+            break;
     }
-]
+    image.src = src;
+    div.appendChild(image);
+    return div;
+}
+
+function createOverlay(card) {
+    var cardOverlay = divWithClass("card-overlay");
+    var cardInfoModal = divWithClassAsChild("card-info-modal", cardOverlay);
+    var cardInfoContent = divWithClassAsChild(
+        "card-info-content",
+        cardInfoModal,
+    );
+    var cardImageAndAmount = divWithClassAsChild(
+        "card-image-and-amount",
+        cardInfoContent,
+    );
+    var imageContainer = divWithClassAsChild("", cardImageAndAmount);
+    var cardImage = divWithClassAsChild("", imageContainer);
+
+    cardImage.className = "card-front";
+    cardImage.style.backgroundImage = `url(${card.image})`;
+    cardImage.style.backgroundSize = "cover";
+    cardImage.style.backgroundPosition = "center";
+
+    var cardInfo = divWithClassAsChild("card-info", cardInfoContent);
+    var cardInfoLeft = divWithClassAsChild("card-info-left", cardInfo);
+    var piracyCardNameContainer = divWithClassAsChild(
+        "piracy-card-copy",
+        cardInfoLeft,
+    );
+
+    piracyCardCopy("Name:", card.name, piracyCardNameContainer);
+    if (card.value) {
+        piracyCardCopy("Value:", card.value, piracyCardNameContainer);
+    }
+    if (card.desc) {
+        piracyCardCopy("Description:", card.desc, piracyCardNameContainer);
+    }
+
+    var cardInfoRight = divWithClassAsChild("card-info-right", cardInfo);
+    var piracyDetailsContainer = divWithClassAsChild(
+        "piracy-card-copy",
+        cardInfoRight,
+    );
+    var cardInfoTitleIcons = divWithClassAsChild(
+        "card-info-title-and-icons",
+        piracyDetailsContainer,
+    );
+
+    // only cards with description have how to play heading, otherwise it's just flavour text
+    if (card.desc) {
+        // How To Play heading
+        var howToPlayHeading = document.createElement("h4");
+        var howToPlayText = document.createElement("strong");
+        howToPlayText.innerText = "How To Play:";
+        howToPlayHeading.appendChild(howToPlayText);
+        howToPlayHeading.className = "rules-section-subheading text-dark sub";
+
+        cardInfoTitleIcons.appendChild(howToPlayHeading);
+    }
+
+    if (card.icons) {
+        card.icons
+            .split(",")
+            .forEach((icon) => cardInfoTitleIcons.appendChild(createIcon(icon)));
+    }
+
+    // add icons
+    var elaboration = document.createElement("p");
+    elaboration.innerText = card.elaboration;
+    elaboration.className = "rules-paragraph left-align";
+
+    piracyDetailsContainer.appendChild(elaboration);
+
+    // close button
+    var closeButton = divWithClassAsChild("close-button", cardInfoModal);
+    var closeButtonImage = document.createElement("img");
+    closeButtonImage.src =
+        "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f0184fd3eab8733eb827e31_delete.svg";
+    closeButton.appendChild(closeButtonImage);
+
+    return cardOverlay;
+}
+
+document.querySelectorAll(".card-holder").forEach((holder) => {
+    holder.onclick = function () {
+        holder.nextElementSibling.style.display = "flex";
+    };
+});
+
+document.querySelectorAll(".close-button").forEach((button) => {
+    button.onclick = function () {
+        button.parentElement.parentElement.style.display = "none";
+    };
+});

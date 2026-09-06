@@ -3,7 +3,7 @@
     "name": "Mystical Spell Scroll",
     "image": "",
     "type": "Item",
-    "quantity": 3,
+    "quantity": "3",
     "icons": ["one-usage", "all"],
     "value": null,
     "cardTexts": ["Reroll any die once"],
@@ -17,7 +17,7 @@
     "name": "Paladin Hammer",
     "image": "",
     "type": "Item",
-    "quantity": 3,
+    "quantity": "3",
     "icons": ["tappable", "all"],
     "value": null,
     "cardTexts": ["Redraw the current Dragon card"],
@@ -40,7 +40,7 @@
     "name": "Thief's Dagger",
     "image": "",
     "type": "item",
-    "quantity": 3,
+    "quantity": "3",
     "icons": ["one-usage", "target"],
     "cardTexts": ["Steal a treasure card"],
     "erratas": [
@@ -55,7 +55,7 @@
     "name": "Orb of Ponderance",
     "image": "",
     "type": "item",
-    "quantity": 3,
+    "quantity": "3",
     "icons": ["tappable", "self"],
     "cardTexts": ["Draw a card from anywhere in a deck"],
     "erratas": [
@@ -70,7 +70,7 @@
     "name": "Wizard's Cloak",
     "image": "",
     "type": "item",
-    "quantity": 3,
+    "quantity": "3",
     "icons": ["tappable", "all"],
     "cardTexts": ["Copy the effect of an item in any inventory"],
     "erratas": [
@@ -87,7 +87,7 @@
     "name": "Regal Lance",
     "image": "",
     "type": "item",
-    "quantity": 3,
+    "quantity": "3",
     "icons": ["one-usage", "all"],
     "cardTexts": ["Gain +1 die for a contest"],
     "erratas": [
@@ -101,7 +101,7 @@
     "name": "Dragonfire Shield",
     "image": "",
     "type": "item",
-    "quantity": 3,
+    "quantity": "3",
     "icons": ["tappable", "all"],
     "cardTexts": ["Prevent a card's effect on a player"],
     "erratas": [
@@ -116,7 +116,7 @@
     "name": "Righteous Sword",
     "image": "",
     "type": "item",
-    "quantity": 3,
+    "quantity": "3",
     "icons": ["tappable", "self"],
     "cardTexts": ["Add +1 value to each of your die for a contest"],
     "erratas": [

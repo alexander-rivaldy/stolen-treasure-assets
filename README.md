@@ -22,7 +22,8 @@
 ### Target
 
 - target
-- all-
+- all
+- all-opps
 - self
 - dragon
 
