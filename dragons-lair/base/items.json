@@ -1,7 +1,7 @@
 [
   {
     "name": "Mystical Spell Scroll",
-    "image": "",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcbb08befb3a4812cf2_ST2-IC001%402x.webp",
     "type": "Item",
     "quantity": "3",
     "icons": ["one-usage", "all"],
@@ -15,7 +15,7 @@
   },
   {
     "name": "Paladin Hammer",
-    "image": "",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcba3c413ee4bed6feb_ST2-IC002%402x.webp",
     "type": "Item",
     "quantity": "3",
     "icons": ["tappable", "all"],
@@ -38,7 +38,7 @@
   },
   {
     "name": "Thief's Dagger",
-    "image": "",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcb184453a7ffafd261_ST2-IC003%402x.webp",
     "type": "item",
     "quantity": "3",
     "icons": ["one-usage", "target"],
@@ -53,7 +53,7 @@
   },
   {
     "name": "Orb of Ponderance",
-    "image": "",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcbbabd2d89b5217f32_ST2-IC004%402x.webp",
     "type": "item",
     "quantity": "3",
     "icons": ["tappable", "self"],
@@ -68,7 +68,7 @@
   },
   {
     "name": "Wizard's Cloak",
-    "image": "",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcbfd7908433415e951_ST2-IC005%402x.webp",
     "type": "item",
     "quantity": "3",
     "icons": ["tappable", "all"],
@@ -85,7 +85,7 @@
   },
   {
     "name": "Regal Lance",
-    "image": "",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcbee781270c31bbf42_ST2-IC006%402x.webp",
     "type": "item",
     "quantity": "3",
     "icons": ["one-usage", "all"],
@@ -99,7 +99,7 @@
   },
   {
     "name": "Dragonfire Shield",
-    "image": "",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcb549095aace4af8e7_ST2-IC007%402x.webp",
     "type": "item",
     "quantity": "3",
     "icons": ["tappable", "all"],
@@ -114,7 +114,7 @@
   },
   {
     "name": "Righteous Sword",
-    "image": "",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcb0911bf6386663164_ST2-IC008%402x.webp",
     "type": "item",
     "quantity": "3",
     "icons": ["tappable", "self"],

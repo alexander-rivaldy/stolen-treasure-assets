@@ -5,9 +5,10 @@
     var baseCards = [
       {
         name: "Mystical Spell Scroll",
-        image: "",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcbb08befb3a4812cf2_ST2-IC001%402x.webp",
         type: "Item",
-        quantity: 3,
+        quantity: "3",
         icons: ["one-usage", "all"],
         value: null,
         cardTexts: ["Reroll any die once"],
@@ -19,9 +20,10 @@
       },
       {
         name: "Paladin Hammer",
-        image: "",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcba3c413ee4bed6feb_ST2-IC002%402x.webp",
         type: "Item",
-        quantity: 3,
+        quantity: "3",
         icons: ["tappable", "all"],
         value: null,
         cardTexts: ["Redraw the current Dragon card"],
@@ -42,9 +44,10 @@
       },
       {
         name: "Thief's Dagger",
-        image: "",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcb184453a7ffafd261_ST2-IC003%402x.webp",
         type: "item",
-        quantity: 3,
+        quantity: "3",
         icons: ["one-usage", "target"],
         cardTexts: ["Steal a treasure card"],
         erratas: [
@@ -57,9 +60,10 @@
       },
       {
         name: "Orb of Ponderance",
-        image: "",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcbbabd2d89b5217f32_ST2-IC004%402x.webp",
         type: "item",
-        quantity: 3,
+        quantity: "3",
         icons: ["tappable", "self"],
         cardTexts: ["Draw a card from anywhere in a deck"],
         erratas: [
@@ -72,9 +76,10 @@
       },
       {
         name: "Wizard's Cloak",
-        image: "",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcbfd7908433415e951_ST2-IC005%402x.webp",
         type: "item",
-        quantity: 3,
+        quantity: "3",
         icons: ["tappable", "all"],
         cardTexts: ["Copy the effect of an item in any inventory"],
         erratas: [
@@ -89,9 +94,10 @@
       },
       {
         name: "Regal Lance",
-        image: "",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcbee781270c31bbf42_ST2-IC006%402x.webp",
         type: "item",
-        quantity: 3,
+        quantity: "3",
         icons: ["one-usage", "all"],
         cardTexts: ["Gain +1 die for a contest"],
         erratas: [
@@ -103,9 +109,10 @@
       },
       {
         name: "Dragonfire Shield",
-        image: "",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcb549095aace4af8e7_ST2-IC007%402x.webp",
         type: "item",
-        quantity: 3,
+        quantity: "3",
         icons: ["tappable", "all"],
         cardTexts: ["Prevent a card's effect on a player"],
         erratas: [
@@ -118,9 +125,10 @@
       },
       {
         name: "Righteous Sword",
-        image: "",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcb0911bf6386663164_ST2-IC008%402x.webp",
         type: "item",
-        quantity: 3,
+        quantity: "3",
         icons: ["tappable", "self"],
         cardTexts: ["Add +1 value to each of your die for a contest"],
         erratas: [
@@ -291,12 +299,12 @@
 
       // add erratas
       card.erratas.forEach((errata) => {
-          var errataElm = document.createElement("p");
-          errataElm.innerText = errata;
-          errataElm.className = "rules-paragraph left-align";
-    
-          piracyDetailsContainer.appendChild(errataElm);
-      })
+        var errataElm = document.createElement("p");
+        errataElm.innerText = errata;
+        errataElm.className = "rules-paragraph left-align";
+
+        piracyDetailsContainer.appendChild(errataElm);
+      });
 
       // close button
       var closeButton = divWithClassAsChild("close-button", cardInfoModal);
