@@ -1,6 +1,7 @@
 [
   {
     "name": "Mystical Spell Scroll",
+    "image": "",
     "type": "Item",
     "quantity": 3,
     "icons": ["one-usage", "all"],
