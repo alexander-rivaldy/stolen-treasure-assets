@@ -438,6 +438,9 @@
       );
 
       addCardTexts("Name:", [card.name], piracyCardNameContainer);
+      if (card.quantity) {
+        addCardTexts("Quantity:", [card.quantity], piracyCardNameContainer);
+      }
       if (card.value) {
         addCardTexts("Value:", [card.value], piracyCardNameContainer);
       }
