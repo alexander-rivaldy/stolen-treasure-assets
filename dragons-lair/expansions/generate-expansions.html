@@ -5,7 +5,8 @@
     var legendaryTreasures = [
       {
         name: "Golden Egg",
-        image: "",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed8425ed54cd374bb2_ST2-LEX001%402x.webp",
         type: "Treasure",
         quantity: "1",
         icons: [],
@@ -18,7 +19,8 @@
       },
       {
         name: "Fire Opal",
-        image: "",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed2c20fec65d7f0b45_ST2-LEX002%402x.webp",
         type: "Treasure",
         quantity: "1",
         icons: [],
@@ -34,7 +36,8 @@
       },
       {
         name: "Dragon Jade",
-        image: "",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedee781270c31bc50c_ST2-LEX003%402x.webp",
         type: "Treasure",
         quantity: "1",
         icons: ["one-usage"],
@@ -52,7 +55,8 @@
       },
       {
         name: "Wyvern Ivory",
-        image: "",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed2dd130cc0fbce411_ST2-LEX004%402x.webp",
         type: "Treasure",
         quantity: "1",
         icons: ["tappable"],
@@ -70,7 +74,8 @@
       },
       {
         name: "Rainbow Scales",
-        image: "",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed1e84b018322ecd27_ST2-LEX005%402x.webp",
         type: "Treasure",
         quantity: "1",
         icons: ["self"],
@@ -82,7 +87,8 @@
       },
       {
         name: "Crystal Claw",
-        image: "",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed5665261ab9e1b423_ST2-LEX006%402x.webp",
         type: "Treasure",
         quantity: "1",
         icons: ["one-usage"],
@@ -94,7 +100,8 @@
       },
       {
         name: "Red Diamond",
-        image: "",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedaa3bb2bea2d2c549_ST2-LEX007%402x.webp",
         type: "Treasure",
         quantity: "1",
         icons: [],
@@ -104,7 +111,8 @@
       },
       {
         name: "Iron Chest",
-        image: "",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed7b31ec9b73c48ec3_ST2-LEX008%402x.webp",
         type: "Treasure",
         quantity: "1",
         icons: [],
@@ -117,7 +125,8 @@
       },
       {
         name: "Molten Gold",
-        image: "",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedfc2f667aa06eedea_ST2-LEX009%402x.webp",
         type: "Treasure",
         quantity: "1",
         icons: [],
@@ -131,7 +140,8 @@
       },
       {
         name: "Obsidian",
-        image: "",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed7b31ec9b73c48ed6_ST2-LEX010%402x.webp",
         type: "Treasure",
         quantity: "1",
         icons: [],
@@ -151,10 +161,168 @@
       },
     ];
 
-    var legendaryTreasuresContainer = document.querySelector(".cards-container.legendary-treasures");
+    var characters = [
+      {
+        name: "Ranger",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed2c20fec65d7f0b33_ST2-CEX001%402x.webp",
+        type: "Character",
+        quantity: "1",
+        icons: [],
+        value: "",
+        cardTexts: [
+          "Action: Swap a card in your inventory with the top card of any deck",
+          "Proc [Odd]: You may look at the top card of any deck",
+        ],
+        erratas: [
+          "When you use the Ranger's action, you must swap the card with the same type.",
+          "",
+          "Expansions interaction:",
+          "- Mythical Monsters: With Lich, you may swap a card in your inventory with the top of a discard pile",
+        ],
+      },
+      {
+        name: "Paladin",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedc1a2b5123a027be1_ST2-CEX002%402x.webp",
+        type: "Character",
+        quantity: "1",
+        icons: [],
+        value: "",
+        cardTexts: [
+          "Action: prevent 1 card's effect",
+          "Proc [1, 6]: Untap all of your items",
+        ],
+        erratas: [],
+      },
+      {
+        name: "Wizard",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed184453a7ffafd599_ST2-CEX003%402x.webp",
+        type: "Character",
+        quantity: "1",
+        icons: [],
+        value: "",
+        cardTexts: [
+          "Passive: Add +1 die on your proc roll",
+          "Proc [Doubles]: Swap two revealed cards of the same type",
+        ],
+        erratas: [],
+      },
+      {
+        name: "Barbarian",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedee781270c31bc4f9_ST2-CEX004%402x.webp",
+        type: "Character",
+        quantity: "1",
+        icons: [],
+        value: "",
+        cardTexts: [
+          "Passive: +1 value to each die you roll",
+          "Proc [Roll until even]: Add +1 die to your contest for each odd roll",
+        ],
+        erratas: [],
+      },
+      {
+        name: "Necromancer",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5feda8bc9403cd67f884_ST2-CEX005%402x.webp",
+        type: "Character",
+        quantity: "1",
+        icons: [],
+        value: "",
+        cardTexts: [
+          "Action: discard a card from the top of any deck",
+          "Proc [3, 4]: Take any card from the discard pile",
+        ],
+        erratas: [],
+      },
+      {
+        name: "Slayer",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed184453a7ffafd5ab_ST2-CEX006%402x.webp",
+        type: "Character",
+        quantity: "1",
+        icons: [],
+        value: "",
+        cardTexts: [
+          "Passive: In an encounter, +1 roll value for each Dragon card drawn",
+          "Proc [5, 6]: Double your item effects in Dragon encounters",
+        ],
+        erratas: [],
+      },
+      {
+        name: "Cleric",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedaa3bb2bea2d2c536_ST2-CEX007%402x.webp",
+        type: "Character",
+        quantity: "1",
+        icons: [],
+        value: "",
+        cardTexts: [
+          "Passive: Cannot use items, -1 to Dragon's roll value for each item in your inventory",
+          "Proc [4, 5, 6]: +1 roll value for each item in your inventory",
+        ],
+        erratas: [],
+      },
+      {
+        name: "Rogue",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fecfd7908433415ed73_ST2-CEX008%402x.webp",
+        type: "Character",
+        quantity: "1",
+        icons: [],
+        value: "",
+        cardTexts: [
+          "Passive: In a wager, each of your treasures has +200 added value",
+          "Proc [Even]: +1 roll value for each treasure wagered",
+        ],
+        erratas: [],
+      },
+      {
+        name: "Bard",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedee781270c31bc4f4_ST2-CEX009%402x.webp",
+        type: "Character",
+        quantity: "1",
+        icons: [],
+        value: "",
+        cardTexts: [
+          "Passive: You have +1 item slot",
+          "Proc [2, 5]: Swap any two item cards in inventories or Dragon's hoard",
+        ],
+        erratas: [],
+      },
+      {
+        name: "Shaman",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedc780bed3fb69230d_ST2-CEX010%402x.webp",
+        type: "Character",
+        quantity: "1",
+        icons: [],
+        value: "",
+        cardTexts: [
+          "Passive: +2 dice for any contest with negative treasure(s)",
+          "Proc [1, 2, 3]: You may move a treasure from your inventory to another or Dragon's hoard.",
+        ],
+        erratas: [],
+      },
+    ];
+
+    var legendaryTreasuresContainer = document.querySelector(
+      ".cards-container.legendary-treasures",
+    );
     legendaryTreasures.forEach((card) => {
       legendaryTreasuresContainer.appendChild(createCardHolder(card));
       legendaryTreasuresContainer.appendChild(createOverlay(card));
+    });
+
+    var charactersContainer = document.querySelector(
+      ".cards-container.character",
+    );
+    characters.forEach((card) => {
+      charactersContainer.appendChild(createCardHolder(card));
+      charactersContainer.appendChild(createOverlay(card));
     });
 
     function createCardHolder(card) {

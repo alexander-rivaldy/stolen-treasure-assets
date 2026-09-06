@@ -14,7 +14,7 @@
   },
   {
     "name": "Fire Opal",
-    "image": "",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed2c20fec65d7f0b45_ST2-LEX002%402x.webp",
     "type": "Treasure",
     "quantity": "1",
     "icons": [],
@@ -30,7 +30,7 @@
   },
   {
     "name": "Dragon Jade",
-    "image": "",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedee781270c31bc50c_ST2-LEX003%402x.webp",
     "type": "Treasure",
     "quantity": "1",
     "icons": ["one-usage"],
@@ -48,7 +48,7 @@
   },
   {
     "name": "Wyvern Ivory",
-    "image": "",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed2dd130cc0fbce411_ST2-LEX004%402x.webp",
     "type": "Treasure",
     "quantity": "1",
     "icons": ["tappable"],
@@ -66,7 +66,7 @@
   },
   {
     "name": "Rainbow Scales",
-    "image": "",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed1e84b018322ecd27_ST2-LEX005%402x.webp",
     "type": "Treasure",
     "quantity": "1",
     "icons": ["self"],
@@ -78,7 +78,7 @@
   },
   {
     "name": "Crystal Claw",
-    "image": "",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed5665261ab9e1b423_ST2-LEX006%402x.webp",
     "type": "Treasure",
     "quantity": "1",
     "icons": ["one-usage"],
@@ -88,7 +88,7 @@
   },
   {
     "name": "Red Diamond",
-    "image": "",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedaa3bb2bea2d2c549_ST2-LEX007%402x.webp",
     "type": "Treasure",
     "quantity": "1",
     "icons": [],
@@ -98,7 +98,7 @@
   },
   {
     "name": "Iron Chest",
-    "image": "",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed7b31ec9b73c48ec3_ST2-LEX008%402x.webp",
     "type": "Treasure",
     "quantity": "1",
     "icons": [],

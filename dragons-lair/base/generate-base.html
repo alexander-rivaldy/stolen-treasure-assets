@@ -343,6 +343,14 @@
       dragonCardsContainer.appendChild(createCardHolder(card));
       dragonCardsContainer.appendChild(createOverlay(card));
     });
+    
+    var dragonCardsContainer = document.querySelector(
+      ".cards-container.dragon",
+    );
+    dragonCards.forEach((card) => {
+      dragonCardsContainer.appendChild(createCardHolder(card));
+      dragonCardsContainer.appendChild(createOverlay(card));
+    });
 
     function createCardHolder(card) {
       var cardHolder = document.createElement("div");
