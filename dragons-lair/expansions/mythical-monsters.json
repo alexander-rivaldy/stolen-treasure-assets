@@ -1,0 +1,201 @@
+[
+  {
+    "name": "Sphinx",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed2f159f58a1b070fe_ST2-MEX001%402x.webp",
+    "type": "Mythic Monsters",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": [
+      "Player Effect:",
+      "Call the parity of your roll",
+      "Correct: +2 to your roll value",
+      "",
+      "Dragon Effect:",
+      "Call the parity of Dragon's roll",
+      "Wrong: +2 to Dragon's roll value"
+    ],
+    "erratas": [
+      "Sphinx's effect is activated before the contest roll of an encounter or wager. ",
+      "Player involved in said encounter or wager makes a parity call of either Odd or Even and resolve Sphinx's effect according to the prediction."
+    ]
+  },
+  {
+    "name": "Chimera",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedc1e7334b7e9ca21c_ST2-MEX002%402x.webp",
+    "type": "Mythic Monsters",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": [
+      "Player Effect:",
+      "Your highest value treasure(s) are unaffected by card effects",
+      "",
+      "Dragon Effect:",
+      "Dragon card effects always target highest value treasure(s)"
+    ],
+    "erratas": [
+      "When used by a player, the highest value treasure(s) can still be affected by wagers.",
+      "When used by a Dragon, Dragon card effects that mention non specific card in inventory now targets highest value treasure(s). Chimera's effect resolves after other value modifying Dragon cards."
+    ]
+  },
+  {
+    "name": "Unicorn",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedc9cceed5dc60e874_ST2-MEX003%402x.webp",
+    "type": "Mythic Monsters",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": [
+      "Player Effect:",
+      "-1 to player's treasure card danger levels",
+      "",
+      "Dragon Effect:",
+      "+1 to all treasure card danger levels"
+    ],
+    "erratas": [
+      "Minimum danger level for a treasure is 0.",
+      "There is no maximum danger level."
+    ]
+  },
+  {
+    "name": "Cyclops",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed0911bf6386663a11_ST2-MEX004%402x.webp",
+    "type": "Mythic Monsters",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": [
+      "Player Effect:",
+      "You have -1 item slot. Your item(s) have tappable use",
+      "",
+      "Dragon Effect:",
+      "All items have 1 use"
+    ],
+    "erratas": [
+      "When used by a player, all items in your inventory now have a tappable usage. One time usage items do not get discarded after use, but rather tapped and gets untapped on your next turn.",
+      "When used by the Dragon, all items in each player's inventory now have a one time usage. Every item gets discarded after use.",
+      "",
+      "Expansions Interactions:",
+      "- Legendary Treasures: Item Chest still adds +1 item slot. Crystal Claw is still discarded after use even if player has Cyclops. Wyvern Ivory does not get discarded even if Dragon has cyclops.",
+      "- Characters: Bard still adds +1 item slot, you are still unable to use items when you have the Cleric character",
+      "- Danger Dragons: Items from quest rewards are not affected by the Dragon's Cyclops"
+    ]
+  },
+  {
+    "name": "Basilisk",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed1c8ff25cfee9e37f_ST2-MEX005%402x.webp",
+    "type": "Mythic Monsters",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": [
+      "Player Effect:",
+      "Before the encounter: Roll a die, if 6, skip Dragon cards",
+      "",
+      "Dragon Effect:",
+      "Before start of turn: Roll a die, if 1, skip your turn"
+    ],
+    "erratas": [
+      "When used by a player, after drawing a treasure card, roll a die for Basilisk's effect. If you roll a 6, the Dragon cards of this encounter is skipped and you go straight to the contested roll for the treasure.",
+      "When used by a Dragon, each player has to roll a die at the start of their turn and its total value is used to resolve the Basilisk's effect instead of the base value of the roll. Players may use items or other card effects for this roll."
+    ]
+  },
+  {
+    "name": "Djinn",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedd761e4307285908b_ST2-MEX006%402x.webp",
+    "type": "Mythic Monsters",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": [
+      "Player Effect:",
+      "Draw: reveal top 3, keep 1, shuffle rest back",
+      "",
+      "Dragon Effect:",
+      "Dragon rolls: add +2 dice, remove 2 dice of lowest value"
+    ],
+    "erratas": [
+      "When used by a player and used with Orb of Ponderance, you can choose which three cards to reveal for the Djinn's effect from anywhere within the deck. Shuffle the deck afterwards.",
+      "",
+      "When used by a Dragon, add one extra die into the roll and remove one die after rolling that has the lowest value.",
+      "For Example:",
+      "- Dragon starts with 1 die, gets added 1 die due to Djinn's effect, total 2 dice in the roll",
+      "- Dice roll result is 3 and 5, remove the die with value of 3",
+      "- Final value is 5"
+    ]
+  },
+  {
+    "name": "Lich",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed7b31ec9b73c48ee8_ST2-MEX007%402x.webp",
+    "type": "Mythic Monsters",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": [
+      "Player Effect:",
+      "You may draw from the top of discard instead of a deck",
+      "",
+      "Dragon Effect:",
+      "Discarded items go to the Dragon's hoard"
+    ],
+    "erratas": [
+      "When used by a player, activating Lich's effect to draw from treasure discard pile will trigger an encounter and gets resolved as usual.",
+      "When used by a Dragon, every item that would go to the discard pile will be moved to the Dragon's hoard instead. Each item is worth +100 for the Dragon.",
+      "",
+      "Expansions interaction:",
+      "- Characters: With Ranger, you may swap a card in your inventory with the top of a discard pile"
+    ]
+  },
+  {
+    "name": "Dryad",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedf79d96f6c8bbf216_ST2-MEX008%402x.webp",
+    "type": "Mythic Monsters",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": [
+      "Player Effect:",
+      "In contest, roll a 1: reroll, Dragon rolls a 6: Dragon rerolls",
+      "",
+      "Dragon Effect:",
+      "In contest, roll a 6: reroll, Dragon rolls a 1: Dragon rerolls"
+    ],
+    "erratas": [
+      "Dryad's effect only applies during contest rolls of encounters and wagers.",
+      "Apply this effect before any card effects."
+    ]
+  },
+  {
+    "name": "Hydra",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed8425ed54cd374bc4_ST2-MEX009%402x.webp",
+    "type": "Mythic Monsters",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": [
+      "Player & Dragon Effect:",
+      "Lose a contest: +1 die for the next roll",
+      "Win: Reset to initial die amount"
+    ],
+    "erratas": [
+      "Every time the user of Hydra loses a contest roll, adds +1 die to their next roll. This effect stacks until the user wins a contest roll. After winning a contest roll, the number of added die is reset back to 0."
+    ]
+  },
+  {
+    "name": "Gryphon",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed2dd130cc0fbce423_ST2-MEX010%402x.webp",
+    "type": "Mythic Monsters",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": [
+      "Player Effect:",
+      "+1 action per turn",
+      "",
+      "Dragon Effect:",
+      "-1 action per turn"
+    ],
+    "erratas": ["Not to be confused with the Griffon dog."]
+  }
+]
