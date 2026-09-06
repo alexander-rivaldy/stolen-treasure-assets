@@ -1,0 +1,115 @@
+[
+  {
+    "name": "Wyvern Vortex",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d75c80911bf63866a1dd8_ST2-IEX001%402x.webp",
+    "type": "Dragon",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": ["The Dragon steals a random treasure card from each player"],
+    "erratas": [
+      "Starting from the player involved in the encounter, roll a die to determine which card in the inventory is moved into the Dragon's hoard."
+    ]
+  },
+  {
+    "name": "Molten Lair",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedb10cdf1fc405f1a1_ST2-IEX002%402x.webp",
+    "type": "Dragon",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": ["Dragon's lowest value treasure is worth x3"],
+    "erratas": [
+      "Negative treasures are counted towards which treasure has the lowest value."
+    ]
+  },
+  {
+    "name": "Poison Breath",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedbe6301ddc569eaf4_ST2-IEX003%402x.webp",
+    "type": "Dragon",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": ["Each player discards their highest value treasure card"],
+    "erratas": [
+      "In case of a tie, owner of treasure gets to decide which treasure is discarded.",
+      "",
+      "Expansions Interaction:",
+      "- Mythical Monsters: Player with Chimera gets their second highest value treasure targeted instead"
+    ]
+  },
+  {
+    "name": "Quetzalcoetl Feather",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed1c8ff25cfee9e348_ST2-IEX004%402x.webp",
+    "type": "Dragon",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": ["Each player and the Dragon draws a treasure card"],
+    "erratas": [
+      "Starting from the player involved in the encounter, draw a card from the same treasure deck initially chosen in the encounter, go the next player in clockwise and the Dragon draws last."
+    ]
+  },
+  {
+    "name": "Draconic Voodoo",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedf0c4f20f0445095c_ST2-IEX005%402x.webp",
+    "type": "Treasure",
+    "quantity": "1",
+    "icons": [],
+    "value": "-100x",
+    "cardTexts": ["Value is -100 per each item in inventory"],
+    "erratas": ["Draconic Voodoo also affects the Dragon."]
+  },
+  {
+    "name": "Naga Totem",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedf7fd89b7f7a37dca_ST2-IEX006%402x.webp",
+    "type": "Treasure",
+    "quantity": "1",
+    "icons": [],
+    "value": "+400",
+    "cardTexts": ["+3 to roll value, -1 for each item in inventory"],
+    "erratas": ["Naga Totem also affects the Dragon."]
+  },
+  {
+    "name": "Hexed Drake Skull",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed1c8ff25cfee9e35a_ST2-IEX007%402x.webp",
+    "type": "Treasure",
+    "quantity": "1",
+    "icons": [],
+    "value": "+100",
+    "cardTexts": ["All negative effects and treasures are now positive"],
+    "erratas": []
+  },
+  {
+    "name": "Amphitere Idol",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed184453a7ffafd5bd_ST2-IEX008%402x.webp",
+    "type": "Item",
+    "quantity": "1",
+    "icons": ["one-usage", "all"],
+    "value": null,
+    "cardTexts": [
+      "Double a Dragon card's effect and pass it to another player"
+    ],
+    "erratas": []
+  },
+  {
+    "name": "Cunning Elixir",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedf7fd89b7f7a37ddc_ST2-IEX009%402x.webp",
+    "type": "Item",
+    "quantity": "1",
+    "icons": ["tappable", "self"],
+    "value": null,
+    "cardTexts": ["Add the danger level to your total roll value"],
+    "erratas": []
+  },
+  {
+    "name": "Dragon Bone Dagger",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed1e84b018322ecd16_ST2-IEX010%402x.webp",
+    "type": "Item",
+    "quantity": "1",
+    "icons": ["tappable", "all"],
+    "value": null,
+    "cardTexts": ["Roll a die, add value to treasure's danger level"],
+    "erratas": []
+  }
+]

@@ -1,0 +1,163 @@
+[
+  {
+    "name": "Fire Scales",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedc1a2b5123a027bf3_ST2-DEX001%402x.webp",
+    "type": "Dragon modifier",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": [
+      "At the start of player's turn, burn 1 random card from inventory"
+    ],
+    "erratas": [
+      "The start of the round is determined by the player who goes first.",
+      "Fire Scales effect can be affected by other card effects.",
+      "",
+      "Card Interactions:",
+      "- Cards discarded by Fire Scales count towards Princess' Distress Quest",
+      "",
+      "Expansions Interactions:",
+      "- Mythical Monsters: When Dragon has Chimera, Fire Scales always targets the highest value treasure first. When Player has Chimera, Fire Scales does not affect your highest value treasure(s)"
+    ]
+  },
+  {
+    "name": "Water Tail",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed27655e4fa56d6281_ST2-DEX002%402x.webp",
+    "type": "Dragon modifier",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": ["+1 to all treasure card danger levels"],
+    "erratas": ["There is no maximum danger level."]
+  },
+  {
+    "name": "Thunder Talons",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5feda8bc9403cd67f889_ST2-DEX003%402x.webp",
+    "type": "Dragon modifier",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": ["Dragon gets +1 die for contests"],
+    "erratas": [
+      "Expansions Interactions:",
+      "- Characters: Paladin can negate this effect"
+    ]
+  },
+  {
+    "name": "Earth Horns",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed7a9470764f122dc0_ST2-DEX004%402x.webp",
+    "type": "Dragon modifier",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": ["Dragon wins all ties for contests"],
+    "erratas": [
+      "Whenever a contest roll happens and the result is tied, the Dragon gets an automatic win instead of rerolling."
+    ]
+  },
+  {
+    "name": "Wind Crest",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5feda9f1a4c80de4bd74_ST2-DEX005%402x.webp",
+    "type": "Dragon modifier",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": [
+      "On an encounter loss: Move all negative treasure to random player inventories"
+    ],
+    "erratas": [
+      "Determine where the negative treasure cards get moved towards through a die roll."
+    ]
+  },
+  {
+    "name": "The King's Crown",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed2fd6c40b1d199216_ST2-DEX006%402x.webp",
+    "secondImage": "",
+    "type": "Quest",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": [
+      "The King's Command: Thou shalt use five different items",
+      "The King's Crown: You may use any item as if it were your own"
+    ],
+    "erratas": [
+      "To add a counter to The King's Commands quest, you need to use a unique item. Using the same item twice will only count towards the quest once.",
+      "When used, you can choose any item in any player's inventory or in the Dragon's hoard.",
+      "You may use The King's Crown when it is not your turn.",
+      "You may only use The King's Crown effect on an untapped item.",
+      "The effect of the chosen item gets resolved as if you are using the item yourself.",
+      "When The King's Crown is used to use an item's effect that has 1️⃣ One usage, then that item is discarded after use instead of The King's Crown"
+    ]
+  },
+  {
+    "name": "The Prince's Horn",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedfd7908433415ed85_ST2-DEX007%402x.webp",
+    "secondImage": "",
+    "type": "Quest",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": [
+      "The Prince's Adventure: Thou shalt emerge victorious across three wagers",
+      "The Prince's Horn: You may reroll any of your dice with values less than 3"
+    ],
+    "erratas": [
+      "You may reroll dice with base value of 1 and 2 indefinitely during your turn across different encounters and wagers."
+    ]
+  },
+  {
+    "name": "The Queen's Ring",
+    "image": "",
+    "secondImage": "",
+    "type": "Quest",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": [
+      "The Queen's Favour: Thou shalt collect four unique treasures.",
+      "The Queen's Ring: All treasures in your inventory have added +100 value"
+    ],
+    "erratas": [
+      "Negative treasures count towards the quest counter. ",
+      "Multiple of the same treasures will only count towards the quest counter once. when you lose a treasure due to a card's effect  the counter goes down as well.",
+      "When The Queen's Favour quest is chosen and you already have 4 or more unique treasures, you immediately gain The Queen's Ring"
+    ]
+  },
+  {
+    "name": "The Knight's Gauntlet",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedbe6301ddc569eae9_ST2-DEX009%402x.webp",
+    "secondImage": "",
+    "type": "Quest",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": [
+      "The Knight's Journey: Thou shalt prevail two encounters against the dragon",
+      "The Knight's Gauntlet: x2 to the effect of any item card in your inventory"
+    ],
+    "erratas": [
+      "The effect of The Knight's Gauntlet does not affect other quest items."
+    ]
+  },
+  {
+    "name": "The Princess' Chalice",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed413ad96b98aef672_ST2-DEX010%402x.webp",
+    "secondImage": "",
+    "type": "Quest",
+    "quantity": "1",
+    "icons": [],
+    "value": null,
+    "cardTexts": [
+      "The Princess' Distress: Thou shalt discard six cards from your inventory",
+      "The Princess' Chalice: Each time you discard a card, draw a card of the same type"
+    ],
+    "erratas": [
+      "Discarding one usage items after using them counts towards The Princess' Distress quest counter.",
+      "Drawing a treasure card due to The Princess' Chalice effect will not trigger an encounter. You may choose which treasure deck to draw from.",
+      "",
+      "Expansions Interactions:",
+      "- Mythical Monsters: When player uses Lich, player may draw from the discard pile instead, effectively gaining back your lost card."
+    ]
+  }
+]
