@@ -1,0 +1,341 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    var legendaryTreasures = [
+      {
+        name: "Golden Egg",
+        image: "",
+        type: "Treasure",
+        quantity: "1",
+        icons: [],
+        value: "+100x",
+        cardTexts: ["Value is 100 times the number of eggs in your inventory"],
+        erratas: [
+          "This treasure is an egg.",
+          "Golden Egg counts itself towards the total number of eggs in your inventory.",
+        ],
+      },
+      {
+        name: "Fire Opal",
+        image: "",
+        type: "Treasure",
+        quantity: "1",
+        icons: [],
+        value: "+100x",
+        cardTexts: [
+          "Start of your turn: roll a die, this card's value is 100 times the result",
+        ],
+        erratas: [
+          "When first drawn, roll a die for Fire Opal's initial value.",
+          "When Fire Opal is stolen or wagered by a player, card value does not change until the new owner's next turn.",
+          "When Fire Opal is in the Dragon's hoard, its value never changes. Except when playing with asymmetric mode, then roll a die at the start of the Dragon's turn for Fire Opal's value",
+        ],
+      },
+      {
+        name: "Dragon Jade",
+        image: "",
+        type: "Treasure",
+        quantity: "1",
+        icons: ["one-usage"],
+        value: "+200",
+        cardTexts: ["+1 value to each of your dice"],
+        erratas: [
+          "Dragon Jade's effect is only applied to the player's / Dragon's whose inventory / hoard this treasure is in.",
+          "Dragon Jade's effect is not applied when being contested for an encounter or wager.",
+          "Dragon Jade adds +1 base value to each of your die. ",
+          "For example:",
+          "- When you roll 1 die, your total die roll value will be +1.",
+          "- When you roll 2 dice, your total die roll value will be +2.",
+          "- When you roll 3 dice, your total die roll value will be +3, etc.",
+        ],
+      },
+      {
+        name: "Wyvern Ivory",
+        image: "",
+        type: "Treasure",
+        quantity: "1",
+        icons: ["tappable"],
+        value: "+300",
+        cardTexts: ["Move to the Dragon’s hoard and draw 1 treasure card"],
+        erratas: [
+          "You may use this treasure as an item to resolve its effect.",
+          "This card is still treated as a treasure card.",
+          "Do not trigger an encounter when using this card's effect.",
+          "",
+          "Card interactions:",
+          "- You may use Orb of Ponderance in combination of this card",
+          "- You may use Djinn in combination of this card",
+        ],
+      },
+      {
+        name: "Rainbow Scales",
+        image: "",
+        type: "Treasure",
+        quantity: "1",
+        icons: ["self"],
+        value: "+250",
+        cardTexts: ["You cannot be targeted by a wager"],
+        erratas: [
+          "No players can target the owner of Rainbow Scales in a wager, including the Dragon.",
+        ],
+      },
+      {
+        name: "Crystal Claw",
+        image: "",
+        type: "Treasure",
+        quantity: "1",
+        icons: ["one-usage"],
+        value: "+350",
+        cardTexts: ["Add +10 value to your dice roll for a contest"],
+        erratas: [
+          "Use this card to activate its effect. Discard it after use.",
+        ],
+      },
+      {
+        name: "Red Diamond",
+        image: "",
+        type: "Treasure",
+        quantity: "1",
+        icons: [],
+        value: "+1000",
+        cardTexts: [],
+        erratas: ["One thousand. Good luck."],
+      },
+      {
+        name: "Iron Chest",
+        image: "",
+        type: "Treasure",
+        quantity: "1",
+        icons: [],
+        value: "+100",
+        cardTexts: ["You have +1 item slot"],
+        erratas: [
+          "Expansions interactions:",
+          "- Mythical Monsters: This card still adds +1 item slot for players with Cyclops",
+        ],
+      },
+      {
+        name: "Molten Gold",
+        image: "",
+        type: "Treasure",
+        quantity: "1",
+        icons: [],
+        value: "+0",
+        cardTexts: [
+          "Your negative treasures become worth +100. Your items become treasures worth +200",
+        ],
+        erratas: [
+          "You cannot use your items with Molten Gold in your inventory.",
+        ],
+      },
+      {
+        name: "Obsidian",
+        image: "",
+        type: "Treasure",
+        quantity: "1",
+        icons: [],
+        value: "-500",
+        cardTexts: [
+          "When you roll a 1, place this treasure in any inventory (Dragon places in random player inventory)",
+        ],
+        erratas: [
+          "For any dice you roll during any instance you roll a die, immediately resolve this card effect",
+          "Obsidian's effect is triggered on the base value of your roll, before being affected by other cards.",
+          "On a 1-on-1 against Dragon, when player rolls a 1, player may place Obsidian in the Dragon's hoard.",
+          "",
+          "Expansions Interactions:",
+          "- Characters: Rolling for Proc ability will trigger this card",
+          "- Mythical Monsters: Rolling for Basilisk will trigger this card",
+        ],
+      },
+    ];
+
+    var legendaryTreasuresContainer = document.querySelector(".cards-container.legendary-treasures");
+    legendaryTreasures.forEach((card) => {
+      legendaryTreasuresContainer.appendChild(createCardHolder(card));
+      legendaryTreasuresContainer.appendChild(createOverlay(card));
+    });
+
+    function createCardHolder(card) {
+      var cardHolder = document.createElement("div");
+      cardHolder.className = "card-holder";
+
+      var cardFront = document.createElement("div");
+      cardFront.className = "card-front";
+      cardFront.style.backgroundImage = `url(${card.image})`;
+      cardFront.style.backgroundSize = "cover";
+      cardFront.style.backgroundPosition = "center";
+      cardHolder.appendChild(cardFront);
+      return cardHolder;
+    }
+
+    function divWithClass(className) {
+      var div = document.createElement("div");
+      div.className = className;
+      return div;
+    }
+
+    function divWithClassAsChild(className, parent) {
+      var div = divWithClass(className);
+      parent.appendChild(div);
+      return div;
+    }
+
+    function addCardTexts(title, texts, parent) {
+      var heading = document.createElement("h4");
+      heading.innerText = title;
+      heading.className = "rules-section-subheading text-dark sub";
+      parent.appendChild(heading);
+
+      for (let idx = 0; idx < texts.length; idx++) {
+        const text = texts[idx];
+
+        var paragraph = document.createElement("p");
+        paragraph.innerText = text;
+        paragraph.className = "rules-paragraph left-align";
+        parent.appendChild(paragraph);
+      }
+    }
+
+    function createIcon(type) {
+      var div = divWithClass("div-block-46");
+      var image = document.createElement("img");
+      var src = "";
+      switch (type) {
+        case "self":
+          src =
+            "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fbdac3c7a6bd0d0dbd98_self-targeted.png";
+          break;
+        case "all-opps":
+          src =
+            "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fbcc538d8311c34d32b5_all-oponents.png";
+          break;
+        case "target":
+          src =
+            "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fa8bb9390a0c9fb9c977_single-opponent.png";
+          break;
+        case "all":
+          src =
+            "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fc61d7e06dc051e6d70e_everyone.png";
+          break;
+        case "tappable":
+          // TODO: change this
+          src =
+            "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fd0ab862c99ba2029738_consistent-effect.png";
+          break;
+        case "one-usage":
+          // TODO: change this
+          src =
+            "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fcdf91fee3d02f531d1e_actioned-in-turn.png";
+          break;
+        case "responsive":
+          src =
+            "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fd0ad187a260def39613_actioned-responsively.png";
+          break;
+        case "interrupt":
+          src =
+            "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f51fd0a67c5485beba7b237_interrupt.png";
+          break;
+      }
+      image.src = src;
+      div.appendChild(image);
+      return div;
+    }
+
+    function createOverlay(card) {
+      var cardOverlay = divWithClass("card-overlay");
+      var cardInfoModal = divWithClassAsChild("card-info-modal", cardOverlay);
+      var cardInfoContent = divWithClassAsChild(
+        "card-info-content",
+        cardInfoModal,
+      );
+      var cardImageAndAmount = divWithClassAsChild(
+        "card-image-and-amount",
+        cardInfoContent,
+      );
+      var imageContainer = divWithClassAsChild("", cardImageAndAmount);
+      var cardImage = divWithClassAsChild("", imageContainer);
+
+      cardImage.className = "card-front";
+      cardImage.style.backgroundImage = `url(${card.image})`;
+      cardImage.style.backgroundSize = "cover";
+      cardImage.style.backgroundPosition = "center";
+
+      var cardInfo = divWithClassAsChild("card-info", cardInfoContent);
+      var cardInfoLeft = divWithClassAsChild("card-info-left", cardInfo);
+      var piracyCardNameContainer = divWithClassAsChild(
+        "piracy-card-copy",
+        cardInfoLeft,
+      );
+
+      addCardTexts("Name:", [card.name], piracyCardNameContainer);
+      if (card.value) {
+        addCardTexts("Value:", [card.value], piracyCardNameContainer);
+      }
+      if (card.cardTexts) {
+        addCardTexts("Description:", card.cardTexts, piracyCardNameContainer);
+      }
+
+      var cardInfoRight = divWithClassAsChild("card-info-right", cardInfo);
+      var piracyDetailsContainer = divWithClassAsChild(
+        "piracy-card-copy",
+        cardInfoRight,
+      );
+      var cardInfoTitleIcons = divWithClassAsChild(
+        "card-info-title-and-icons",
+        piracyDetailsContainer,
+      );
+
+      // only cards with description have how to play heading, otherwise it's just flavour text
+      if (card.erratas) {
+        // How To Play heading
+        var howToPlayHeading = document.createElement("h4");
+        var howToPlayText = document.createElement("strong");
+        howToPlayText.innerText = "How To Play:";
+        howToPlayHeading.appendChild(howToPlayText);
+        howToPlayHeading.className = "rules-section-subheading text-dark sub";
+
+        cardInfoTitleIcons.appendChild(howToPlayHeading);
+      }
+
+      // add icons
+      if (card.icons) {
+        for (let idx = 0; idx < card.icons; idx++) {
+          const icon = card.icons[idx];
+          cardInfoTitleIcons.appendChild(createIcon(icon));
+        }
+      }
+
+      // add erratas
+      card.erratas.forEach((errata) => {
+        var errataElm = document.createElement("p");
+        errataElm.innerText = errata;
+        errataElm.className = "rules-paragraph left-align";
+
+        piracyDetailsContainer.appendChild(errataElm);
+      });
+
+      // close button
+      var closeButton = divWithClassAsChild("close-button", cardInfoModal);
+      var closeButtonImage = document.createElement("img");
+      closeButtonImage.src =
+        "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/5f0184fd3eab8733eb827e31_delete.svg";
+      closeButton.appendChild(closeButtonImage);
+
+      return cardOverlay;
+    }
+
+    document.querySelectorAll(".card-holder").forEach((holder) => {
+      holder.onclick = function () {
+        holder.nextElementSibling.style.display = "flex";
+      };
+    });
+
+    document.querySelectorAll(".close-button").forEach((button) => {
+      button.onclick = function () {
+        button.parentElement.parentElement.style.display = "none";
+      };
+    });
+  });
+</script>
