@@ -2,7 +2,7 @@
 
 <script>
   $(document).ready(function () {
-    var baseCards = [
+    var itemCards = [
       {
         name: "Mystical Spell Scroll",
         image:
@@ -141,10 +141,207 @@
       },
     ];
 
-    var baseCardsContainer = document.querySelector(".cards-container.base");
-    baseCards.forEach((baseCard) => {
-      baseCardsContainer.appendChild(createCardHolder(baseCard));
-      baseCardsContainer.appendChild(createOverlay(baseCard));
+    var dragonCards = [
+      {
+        name: "Claw Attack",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcbb10cdf1fc405ee25_ST2-DC001%402x.webp",
+        type: "Dragon",
+        quantity: "4",
+        icons: ["target"],
+        value: null,
+        cardTexts: ["Player discards 1 card from their inventory"],
+        erratas: [
+          "Player chooses which card to discard from inventory, the card chosen could either be a treasure or an item card.",
+          "If player has no card in inventory, this card does nothing.",
+          "Claw Attack only affects the current player in encounter.",
+        ],
+      },
+      {
+        name: "Dragon Nest",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcb4ba1151be439356d_ST2-DC002%402x.webp",
+        type: "Dragon",
+        quantity: "2",
+        icons: ["interrupt"],
+        value: null,
+        cardTexts: ["Dragon's highest value treasure is worth x2"],
+        erratas: [
+          "The modified value of a treasure affected by Dragon Nest counts towards a wager condition, Dragon Nest is then removed from the treasure if the player wins the wager.",
+          "Dragon Nest stays in the Dragon's hoard even after the treasure gets stolen or wagered by a player.",
+          "Dragon Nest immediately moves to the next applicable treasure in the Dragon's hoard when the original treasure has been removed from the Dragon's hoard.",
+          "Dragon Nest only stacks if there is only one treasure in Dragon's hoard.",
+          "",
+          "House rule option: remove the ! icon modifier to lessen the difficulty",
+        ],
+      },
+      {
+        name: "Hoarding",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcb7a9470764f1227ee_ST2-DC003%402x.webp",
+        type: "Dragon",
+        quantity: "4",
+        icons: ["interrupt"],
+        value: null,
+        cardTexts: ["The Dragon draws 1 treasure card"],
+        erratas: [
+          "When drawn, immediately draws one treasure card from the same deck the player drew from and add it into the Dragon's hoard.",
+          "If the initial chosen deck is empty, draw from the other remaining treasure deck.",
+        ],
+      },
+      {
+        name: "Dragon Glare",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcb413ad96b98aef33e_ST2-DC004%402x.webp",
+        type: "Dragon",
+        quantity: "3",
+        icons: ["dragon"],
+        value: null,
+        cardTexts: ["Reroll a Dragon's losing roll once this encounter"],
+        erratas: [
+          "Reroll all the dice used in the initial roll when the Dragon loses. Player's dice are not rerolled.",
+          "Re-apply the effects of all other Dragon cards during the reroll that affects the dice roll value. Proc effects are resolved from the first roll.",
+          "When there are multiple Dragon Glare cards drawn, Dragon gets to re-roll for each Dragon Glare cards.",
+        ],
+      },
+      {
+        name: "Defensive Tail",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcb2dd130cc0fbce140_ST2-DC005%402x.webp",
+        type: "Dragon",
+        quantity: "4",
+        icons: ["dragon"],
+        value: null,
+        cardTexts: ["x2 to the Dragon's dice roll value"],
+        erratas: [
+          "The total value of the Dragon's dice roll is multiplied by 2 during this encounter.",
+          "Re-apply Defensive Tail's effect during the entire encounter, even after re-rolling.",
+        ],
+      },
+      {
+        name: "Dragon Roar",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcb2f159f58a1b06dc0_ST2-DC006%402x.webp",
+        type: "Dragon",
+        quantity: "4",
+        icons: ["all-opps"],
+        value: null,
+        cardTexts: ["Each player tap all their items"],
+        erratas: [
+          "1️⃣ One usage items tapped due to Dragon Roar's effect are not discarded. They are untapped on their respective player's turn.",
+          "Dragon Roar affects all players, not just the player in the encounter.",
+        ],
+      },
+      {
+        name: "Vicious Bite",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcbfd7908433415e93f_ST2-DC007%402x.webp",
+        type: "Dragon",
+        quantity: "3",
+        icons: ["target"],
+        value: null,
+        cardTexts: ["Dragon steals 1 random card from the player"],
+        erratas: [
+          "The card taken by the Dragon can either be a treasure or item card.",
+          "Determine the card taken by assigning values to each card and rolling a die / dice.",
+          "For example:",
+          "The player has 3 cards in their inventory, the value assignment is as follows",
+          "- The first card : 1 and 2",
+          "- The second card : 3 and 4",
+          "- The third card : 5 and 6",
+          "The Dragon then rolls a die and steals the card according to the value rolled.",
+          "",
+          "Note: Item card in the Dragon's hoard is worth +100 to the Dragon",
+        ],
+      },
+      {
+        name: "Dragon Eclipse",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcb8ee8b6a8e9d22a4b_ST2-DC008%402x.webp",
+        type: "Dragon",
+        quantity: "2",
+        icons: ["interrupt"],
+        value: null,
+        cardTexts: ["Add a treasure card into the encounter"],
+        erratas: [
+          "The treasure card added is from the same initial treasure deck chosen by the player.",
+          "The new treasure card danger level gets added into the current encounter.",
+          "",
+          "For example:",
+          "- Player draws a treasure with danger level 2 -> 2 Dragon cards need to be resolved before the dice roll",
+          "- The first Dragon card drawn is Dragon Eclipse and a treasure with danger level 3 is added into the encounter",
+          "- Danger level is now 2 + 3 = 5",
+          "- With the Dragon Eclipse's effect resolved, Player needs to resolve 4 more Dragon cards",
+          "- Winner of the encounter takes all treasure cards in the encounter",
+        ],
+      },
+      {
+        name: "Dragon Stomp",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcbd761e43072858136_ST2-DC009%402x.webp",
+        type: "Dragon",
+        quantity: "4",
+        icons: ["target"],
+        value: null,
+        cardTexts: ["Player discards 1 item card from their inventory"],
+        erratas: [
+          "Player gets to choose which item to be discarded, if player has no item, this card does nothing.",
+        ],
+      },
+      {
+        name: "Fire Breath",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcb919ed96761fbcc33_ST2-DC010%402x.webp",
+        type: "Dragon",
+        quantity: "3",
+        icons: ["all-opps"],
+        value: null,
+        cardTexts: ["Each player discards 1 card"],
+        erratas: [
+          "Player chooses which card to discard from inventory, the card chosen could either be a treasure or an item card.",
+          "If player has no card in inventory, this card does nothing.",
+        ],
+      },
+      {
+        name: "Wing Gust",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcbbe6301ddc569e7ac_ST2-DC011%402x.webp",
+        type: "Dragon",
+        quantity: "3",
+        icons: ["target"],
+        value: null,
+        cardTexts: ["Dragon swaps lowest treasure with the player's highest"],
+        erratas: [
+          "If either the Dragon or player has no treasure, this card does nothing.",
+        ],
+      },
+      {
+        name: "Hard Scales",
+        image:
+          "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fcb1c8ff25cfee9d55c_ST2-DC012%402x.webp",
+        type: "Dragon",
+        quantity: "4",
+        icons: ["interrupt"],
+        value: null,
+        cardTexts: ["Players cannot use items in this encounter"],
+        erratas: [
+          "All players are unable to use any item during this encounter, their items are not tapped due to this card.",
+        ],
+      },
+    ];
+
+    var itemCardsContainer = document.querySelector(".cards-container.item");
+    itemCards.forEach((card) => {
+      itemCardsContainer.appendChild(createCardHolder(card));
+      itemCardsContainer.appendChild(createOverlay(card));
+    });
+
+    var dragonCardsContainer = document.querySelector(
+      ".cards-container.dragon",
+    );
+    dragonCards.forEach((card) => {
+      dragonCardsContainer.appendChild(createCardHolder(card));
+      dragonCardsContainer.appendChild(createOverlay(card));
     });
 
     function createCardHolder(card) {
