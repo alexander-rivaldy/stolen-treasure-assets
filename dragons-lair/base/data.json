@@ -4,13 +4,36 @@
     "image": "",
     "type": "Item",
     "quantity": 3,
-    "icons": ["one-usage", "all"],
+    "icons": ["one-usage", "all-and-dragon"],
     "value": null,
     "cardTexts": ["Reroll any die once"],
     "erratas": [
       "When you use Mystical Spell scroll, choose 1 die that has been rolled during an encounter or wager and reroll it.",
       "You can choose your die, the dragon's die or another player's die.",
       "Resolve this effect immediately after this item is used."
+    ]
+  },
+  {
+    "name": "Paladin Hammer",
+    "image": "",
+    "type": "Item",
+    "quantity": 3,
+    "icons": ["tappable", "all"],
+    "value": null,
+    "cardTexts": ["Redraw the current Dragon card"],
+    "erratas": [
+      "The previously drawn Dragon card is discarded and its effect is not resolved. A Dragon card discarded by Paladin Hammer does not count towards the danger level. ",
+      "Player must choose to use Paladin Hammer right before a Dragon card's effect is resolved. Paladin Hammer cannot be used to redraw a previous Dragon card whose effect has been resolved.",
+      "You may not use Paladin Hammer on a Dragon card with ! icon",
+      "",
+      "Example scenario: ",
+      "On player's turn, player draws a gold treasure card with danger level of 3, meaning that player needs to resolve 3 Dragon cards",
+      "The first Dragon card is drawn and player does not use Paladin Hammer, the effect resolves. (1 out of 3 danger level fulfilled)",
+      "The second Dragon card drawn and player uses Paladin Hammer. That Dragon card's effect is not resolved and is discarded. A new Dragon card is drawn to replace the discarded Dragon card, the effect of the new Dragon card resolves (2 out of 3 danger level fulfilled)",
+      "The third Dragon card is drawn, the effect resolves. (3 out of 3 danger level fulfilled)",
+      "",
+      "",
+      "Note: 4 Dragon cards have been drawn in the encounter, only 3 effects resolved to fulfill the danger level since one was discarded by Paladin Hammer"
     ]
   }
 ]
