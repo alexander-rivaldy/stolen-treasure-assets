@@ -20,9 +20,11 @@
 - in-turn
 
 ### Target
-- all-players
-- all-and-dragon
+
+- target
+- all-
 - self
 - dragon
+
 
 
