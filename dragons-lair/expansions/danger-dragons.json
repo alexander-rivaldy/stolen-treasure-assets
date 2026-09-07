@@ -72,7 +72,7 @@
   {
     "name": "The King's Crown",
     "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed2fd6c40b1d199216_ST2-DEX006%402x.webp",
-    "secondImage": "",
+    "secondImage": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d7815fc68284afd47c9fa_ST2-DEX011%402x.webp",
     "type": "Quest",
     "quantity": "1",
     "icons": [],
@@ -93,7 +93,7 @@
   {
     "name": "The Prince's Horn",
     "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedfd7908433415ed85_ST2-DEX007%402x.webp",
-    "secondImage": "",
+    "secondImage": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d78152c20fec65d83d657_ST2-DEX012%402x.webp",
     "type": "Quest",
     "quantity": "1",
     "icons": [],
@@ -108,8 +108,8 @@
   },
   {
     "name": "The Queen's Ring",
-    "image": "",
-    "secondImage": "",
+    "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5feda9f1a4c80de4bd78_ST2-DEX008%402x.webp",
+    "secondImage": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d78158ee8b6a8e9d720d8_ST2-DEX013%402x.webp",
     "type": "Quest",
     "quantity": "1",
     "icons": [],
@@ -127,7 +127,7 @@
   {
     "name": "The Knight's Gauntlet",
     "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fedbe6301ddc569eae9_ST2-DEX009%402x.webp",
-    "secondImage": "",
+    "secondImage": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d7815f0c4f20f0449cb96_ST2-DEX014%402x.webp",
     "type": "Quest",
     "quantity": "1",
     "icons": [],
@@ -143,7 +143,7 @@
   {
     "name": "The Princess' Chalice",
     "image": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d5fed413ad96b98aef672_ST2-DEX010%402x.webp",
-    "secondImage": "",
+    "secondImage": "https://cdn.prod.website-files.com/5d79944c26acc6f0a7e96822/6a9d78159439d4a7fd9fd9f4_ST2-DEX015%402x.webp",
     "type": "Quest",
     "quantity": "1",
     "icons": [],

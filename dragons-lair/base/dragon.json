@@ -5,7 +5,6 @@
     "type": "Dragon",
     "quantity": "4",
     "icons": ["target"],
-    "value": null,
     "cardTexts": ["Player discards 1 card from their inventory"],
     "erratas": [
       "Player chooses which card to discard from inventory, the card chosen could either be a treasure or an item card.",
@@ -19,7 +18,6 @@
     "type": "Dragon",
     "quantity": "2",
     "icons": ["interrupt"],
-    "value": null,
     "cardTexts": ["Dragon's highest value treasure is worth x2"],
     "erratas": [
       "The modified value of a treasure affected by Dragon Nest counts towards a wager condition, Dragon Nest is then removed from the treasure if the player wins the wager.",
@@ -36,7 +34,6 @@
     "type": "Dragon",
     "quantity": "4",
     "icons": ["interrupt"],
-    "value": null,
     "cardTexts": ["The Dragon draws 1 treasure card"],
     "erratas": [
       "When drawn, immediately draws one treasure card from the same deck the player drew from and add it into the Dragon's hoard.",
@@ -49,7 +46,6 @@
     "type": "Dragon",
     "quantity": "3",
     "icons": ["dragon"],
-    "value": null,
     "cardTexts": ["Reroll a Dragon's losing roll once this encounter"],
     "erratas": [
       "Reroll all the dice used in the initial roll when the Dragon loses. Player's dice are not rerolled.",
@@ -63,7 +59,6 @@
     "type": "Dragon",
     "quantity": "4",
     "icons": ["dragon"],
-    "value": null,
     "cardTexts": ["x2 to the Dragon's dice roll value"],
     "erratas": [
       "The total value of the Dragon's dice roll is multiplied by 2 during this encounter.",
@@ -76,7 +71,6 @@
     "type": "Dragon",
     "quantity": "4",
     "icons": ["all-opps"],
-    "value": null,
     "cardTexts": ["Each player tap all their items"],
     "erratas": [
       "1️⃣ One usage items tapped due to Dragon Roar's effect are not discarded. They are untapped on their respective player's turn.",
@@ -89,7 +83,6 @@
     "type": "Dragon",
     "quantity": "3",
     "icons": ["target"],
-    "value": null,
     "cardTexts": ["Dragon steals 1 random card from the player"],
     "erratas": [
       "The card taken by the Dragon can either be a treasure or item card.",
@@ -110,7 +103,6 @@
     "type": "Dragon",
     "quantity": "2",
     "icons": ["interrupt"],
-    "value": null,
     "cardTexts": ["Add a treasure card into the encounter"],
     "erratas": [
       "The treasure card added is from the same initial treasure deck chosen by the player.",
@@ -130,7 +122,6 @@
     "type": "Dragon",
     "quantity": "4",
     "icons": ["target"],
-    "value": null,
     "cardTexts": ["Player discards 1 item card from their inventory"],
     "erratas": [
       "Player gets to choose which item to be discarded, if player has no item, this card does nothing."
@@ -142,7 +133,6 @@
     "type": "Dragon",
     "quantity": "3",
     "icons": ["all-opps"],
-    "value": null,
     "cardTexts": ["Each player discards 1 card"],
     "erratas": [
       "Player chooses which card to discard from inventory, the card chosen could either be a treasure or an item card.",
@@ -155,7 +145,6 @@
     "type": "Dragon",
     "quantity": "3",
     "icons": ["target"],
-    "value": null,
     "cardTexts": ["Dragon swaps lowest treasure with the player's highest"],
     "erratas": [
       "If either the Dragon or player has no treasure, this card does nothing."
@@ -167,7 +156,6 @@
     "type": "Dragon",
     "quantity": "4",
     "icons": ["interrupt"],
-    "value": null,
     "cardTexts": ["Players cannot use items in this encounter"],
     "erratas": [
       "All players are unable to use any item during this encounter, their items are not tapped due to this card."
